@@ -14,9 +14,9 @@ abstract class Employee implements Payable
     private static $employee_count = 0;
 
     //constructor
-    public function __construct($person, $ssn)
+    public function __construct($firstname, $lastname, $ssn)
     {
-        $this->person = $person;
+        $this->person = new Person($firstname, $lastname);
         $this->ssn = $ssn;
         self::$employee_count++;
     }

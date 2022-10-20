@@ -14,8 +14,8 @@ class SalariedEmployee extends Employee {
     private static $employee_count = 0;
 
     //constructor
-    public function __construct($person, $ssn, $weekly_salary) {
-        parent::__construct($person, $ssn);
+    public function __construct($firstname, $lastname, $ssn, $weekly_salary) {
+        parent::__construct($firstname, $lastname, $ssn);
         $this->weekly_salary = $weekly_salary;
         self::$employee_count++;
     }

@@ -12,8 +12,8 @@ Class BasePlusCommissionEmployee extends CommissionEmployee {
     private $base_salary;
 
     // class constructor
-    public function __construct($person, $ssn, $sales, $commission_rate, $base_salary) {
-        parent::__construct($person, $ssn, $sales, $commission_rate);
+    public function __construct($firstname, $lastname, $ssn, $sales, $commission_rate, $base_salary) {
+        parent::__construct($firstname, $lastname, $ssn, $sales, $commission_rate);
         $this->base_salary = $base_salary;
     }
 
@@ -35,6 +35,6 @@ Class BasePlusCommissionEmployee extends CommissionEmployee {
         printf ("<br>Commission rate: $%0.2f" , $this->getCommission_rate());
         echo "<br>Base salary: $", number_format($this->getBaseSalary(), 2, '.', ',');
         echo "<br>Earning: $" ,
-            number_format($this->getPaymentAmount(), 2, '.', ',');
+            number_format($this->getPaymentAmount(), 2, '.', ','), "<br>";
     }
 }
