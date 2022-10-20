@@ -36,7 +36,7 @@ class SalariedEmployee extends Employee {
         parent::toString();
         echo "<br><b>Weekly Salary:</b> $" , number_format($this->getWeeklySalary(), 2, '.', ',');
         echo"<br>";
-        echo "<b>Payment Amount: </b>" , number_format($this->getPaymentAmount(), 2, '.', ',');
+        echo "<b>Payment Amount: </b>$" , number_format($this->getPaymentAmount(), 2, '.', ',');
         echo"<br>";
     }
 
