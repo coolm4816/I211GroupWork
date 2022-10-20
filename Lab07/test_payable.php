@@ -40,11 +40,12 @@ printStarRow();
 $invoice1 = new Invoice("01234", "seat", 2, 375);
 $invoice2 = new Invoice("56789", "tire", 4, 79.95);
 
-$sal_employee = new SalariedEmployee("John Smith", "111-11-1111", 800);
-$hrly_employee = new HourlyEmployee("Karen Price", "222-22-2222", 16.75, 40);
-$comm_employee = new CommissionEmployee("Sue Jones", "333-33-3333", 10000, 0.06);
-$base_comm_employee = new BasePlusCommissionEmployee("Bob Lewis", "444-44-4444", 5000,
-    0.04, 300);
+$sal_employee = new SalariedEmployee(new Person("John", "Smith"), "111-11-1111", 800);
+$hrly_employee = new HourlyEmployee(new Person("Karen", "Price"), "222-22-2222", 16.75, 40);
+$comm_employee = new CommissionEmployee(new Person("Sue", "Jones"), "333-33-3333",
+    10000, 0.06);
+$base_comm_employee = new BasePlusCommissionEmployee(new Person("Bob", "Lewis"), "444-44-4444",
+    5000, 0.04, 300);
 
 // array to store objs
 $objects = [
