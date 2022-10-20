@@ -47,13 +47,13 @@ class Invoice implements Payable{
 
     public function toString(){
         echo "<b>Invoice</b><br>";
-        echo "Part Number: ", $this->getPartNumber() , " ", $this->getPartDescription() , "<br>";
+        echo "Part Number: ", $this->getPartNumber() , " (", $this->getPartDescription() , ")<br>";
         echo "Quantity: ", $this->getQuantity(), "<br>";
-        echo "Price per item: ", $this->getPricePerItem(), "<br>";
+        echo "Price per item: $", $this->getPricePerItem(), "<br>";
         printf("Payment: $%0.2f", $this->getPaymentAmount(), "<br>");
     }
 
-    public function getInvoiceCount(){
+    public static function getInvoiceCount(){
         return self::$invoice_count;
     }
 

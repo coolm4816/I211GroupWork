@@ -31,8 +31,9 @@ Class BasePlusCommissionEmployee extends CommissionEmployee {
     public function toString() {
         echo "<h2>Base Plus Commission Employee</h2>";
         Employee::toString();
+        // re-wrote toString() method so that base salary could be printed before earning on the webpage.
         echo "<br><b>Gross sale:</b> $", number_format($this->getSales(), 2,'.',',');
-        printf ("<br><b>Commission rate:</b> $%0.2f" , $this->getCommission_rate());
+        printf ("<br><b>Commission rate:</b> %0.2f" , $this->getCommission_rate());
         echo "<br><b>Base salary:</b> $", number_format($this->getBaseSalary(), 2, '.', ',');
         echo "<br><b>Earning:</b> $" ,
             number_format($this->getPaymentAmount(), 2, '.', ','), "<br>";
