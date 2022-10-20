@@ -76,6 +76,9 @@ function printStarRow() {
     </head>
 
     <body>
-
+    <?php
+    echo "<h2>" . Employee::getEmployeeCount() . " employees have been created.</h2>";
+    echo "<h2>" . Invoice::getInvoiceCount() . " invoice have been created.</h2>";
+    ?>
     </body>
 </html>
