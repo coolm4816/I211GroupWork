@@ -32,7 +32,7 @@ Class BasePlusCommissionEmployee extends CommissionEmployee {
         echo "<h2>Base Plus Commission Employee</h2>";
         Employee::toString();
         echo "<br><b>Gross sale:</b> $", number_format($this->getSales(), 2,'.',',');
-        printf ("<br><b>Commission rate:</b> $%0.2f" , $this->getCommission_rate());
+        printf ("<br><b>Commission rate:</b> %0.2f" , $this->getCommission_rate());
         echo "<br><b>Base salary:</b> $", number_format($this->getBaseSalary(), 2, '.', ',');
         echo "<br><b>Earning:</b> $" ,
             number_format($this->getPaymentAmount(), 2, '.', ','), "<br>";
