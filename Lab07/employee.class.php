@@ -41,8 +41,7 @@ abstract class Employee extends Person implements Payable
 
     // toString method
     public function toString() {
-        parent::toString();
-       // echo "<b>Name: </b>" , $this->getPerson()->getFirstName(). " ". $this->getPerson()->getLastName();
+        echo "<b>Name: </b>" , $this->person->getFirstName(). " ". $this->person->getLastName();
         echo "<br><b>Social Security Number</b>: ". $this->getSsn();
     }
 
