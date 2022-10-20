@@ -42,14 +42,15 @@ class Invoice implements Payable{
 
     //Implementing the Payable methods
     public function getPaymentAmount(){
-        // TODO: Implement getPaymentAmount() method.
+        return $this->price_per_item * $this->quantity;
     }
 
     public function toString(){
+        echo "<b>Invoice</b><br>";
         echo "Part Number: ", $this->getPartNumber() , " ", $this->getPartDescription() , "<br>";
         echo "Quantity: ", $this->getQuantity(), "<br>";
         echo "Price per item: ", $this->getPricePerItem(), "<br>";
-        echo "Payment: ", $this->getPaymentAmount(), "<br>";
+        printf("Payment: $%0.2f", $this->getPaymentAmount(), "<br>");
     }
 
     public function getInvoiceCount(){

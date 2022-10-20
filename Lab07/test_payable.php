@@ -64,7 +64,7 @@ foreach ($objects as $object) {
 
 // print a row of "*" chars
 function printStarRow() {
-    echo "*****************************************************<br>";
+    echo "<br>*****************************************************<br>";
 }
 ?>
 
@@ -77,8 +77,8 @@ function printStarRow() {
 
     <body>
     <?php
-    echo "<h2>" . Employee::getEmployeeCount() . " employees have been created.</h2>";
-    echo "<h2>" . Invoice::getInvoiceCount() . " invoice have been created.</h2>";
+    echo "<h3>Employees: " . Employee::getEmployeeCount() . "</h3>";
+    echo "<h3>Invoices: " . Invoice::getInvoiceCount() . "</h3>";
     ?>
     </body>
 </html>

@@ -37,9 +37,9 @@ Class CommissionEmployee extends Employee {
     public function toString() {
         echo "<h2>Commission Employee</h2>";
         parent::toString();
-        echo "<br>Gross sale: $", number_format($this->getSales(), 2,'.',',');
-        printf ("<br>Commission rate: $%0.2f" , $this->getCommission_rate());
-        echo "<br>Earning: $" ,
+        echo "<br><b>Gross sale:</b> $", number_format($this->getSales(), 2,'.',',');
+        printf ("<br><b>Commission rate:</b> $%0.2f" , $this->getCommission_rate());
+        echo "<br><b>Earning:</b> $" ,
             number_format($this->getPaymentAmount(), 2, '.', ','), "<br>";
     }
 }
