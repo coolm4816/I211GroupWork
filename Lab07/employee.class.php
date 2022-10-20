@@ -7,7 +7,7 @@
 */
 
 // The abstract Employee class
-abstract class Employee implements Payable
+abstract class Employee extends Person implements Payable
 {
     private $person; // object of Person class
     private $ssn;
@@ -41,7 +41,8 @@ abstract class Employee implements Payable
 
     // toString method
     public function toString() {
-        echo "<b>Name: </b>" , $this->getPerson()->getFirstName(). " ". $this->getPerson()->getLastName();
+        parent::toString();
+       // echo "<b>Name: </b>" , $this->getPerson()->getFirstName(). " ". $this->getPerson()->getLastName();
         echo "<br><b>Social Security Number</b>: ". $this->getSsn();
     }
 

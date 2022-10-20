@@ -52,4 +52,8 @@ class Invoice implements Payable{
         echo "Payment: ", $this->getPaymentAmount(), "<br>";
     }
 
+    public function getInvoiceCount(){
+        return self::$invoice_count;
+    }
+
 }
