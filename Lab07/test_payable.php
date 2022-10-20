@@ -8,7 +8,7 @@
 
 //Autoload the class files
 
-//convert a camel cased string to a underscored string
+//convert a camel cased string to an underscored string
 function camelCaseToUnderscore($str) {
     //store all characters in an array
     $characters = str_split($str);
@@ -30,6 +30,41 @@ function camelCaseToUnderscore($str) {
 spl_autoload_register(function($class_name){
     require_once camelCaseToUnderscore($class_name) . '.class.php';
 });
+
+// test company obj
+echo"<h2>Lab 7</h2>";
+printStarRow();
+
+// create objs
+
+$invoice1 = new Invoice("01234", "seat", 2, 375);
+$invoice2 = new Invoice("56789", "tire", 4, 79.95);
+
+$sal_employee = new SalariedEmployee("John Smith", "111-11-1111", 800);
+$hrly_employee = new HourlyEmployee("Karen Price", "222-22-2222", 16.75, 40);
+$comm_employee = new CommissionEmployee("Sue Jones", "333-33-3333", 10000, 0.06);
+$base_comm_employee = new BasePlusCommissionEmployee("Bob Lewis", "444-44-4444", 5000,
+    0.04, 300);
+
+// array to store objs
+$objects = [
+    $invoice1,
+    $invoice2,
+    $sal_employee,
+    $hrly_employee,
+    $comm_employee,
+    $base_comm_employee
+];
+
+foreach ($objects as $object) {
+    $object->toString();
+    printStarRow();
+}
+
+// print a row of "*" chars
+function printStarRow() {
+    echo "*****************************************************<br>";
+}
 ?>
 
 <!DOCTYPE html>
