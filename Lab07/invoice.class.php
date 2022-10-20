@@ -53,7 +53,7 @@ class Invoice implements Payable{
         printf("Payment: $%0.2f", $this->getPaymentAmount(), "<br>");
     }
 
-    public function getInvoiceCount(){
+    public static function getInvoiceCount(){
         return self::$invoice_count;
     }
 
