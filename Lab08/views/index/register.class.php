@@ -14,7 +14,6 @@ class Register extends View
         parent::header();
         ?>
         <!--HTML code-->
-        <img src="www/img/peapod_logo.png" style="float: right; width: 130px">
         <div class="top-row">CREATE AN ACCOUNT</div>
         <div class="middle-row">
             <p>Your account has been successfully created.</p>
