@@ -10,7 +10,7 @@
 class Verify extends View
 {
     // display HTML page
-    public function display()
+    public function display($message)
     {
         // get the header from parent
         parent::header();
@@ -18,7 +18,12 @@ class Verify extends View
         <!--HTML code-->
         <div class="top-row">Login</div>
         <div class="middle-row">
-            <p>You have successfully logged in.</p>
+            <p>
+                <?php
+                    // php block for unique message
+                    $message
+                ?>
+            </p>
         </div>
         <div class="bottom-row">
             <span style="float: left">

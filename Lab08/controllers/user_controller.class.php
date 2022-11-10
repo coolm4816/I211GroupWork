@@ -10,28 +10,32 @@
 class UserController{
     private $user_model;
 
+    // constructor
     public function __construct(){
         $this->user_model = UserModel::getUserModel();
     }
 
+    // define method to display index page
     public function index(){
         $view = new Index();
-        $view->display;
-    }
-
-    public function register(){
-        $view = new Register();
         $view->display();
     }
 
+    // define method to display account creation status
+    public function register($message){
+        $view = new Register();
+        $view->display($message);
+    }
+
+    // difine method tp display login page
     public function login(){
         $view = new Login();
         $view->display();
     }
 
-    public function verify(){
+    public function verify($message){
         $view = new Verify();
-        $view->display();
+        $view->display($message);
     }
 
     public function logout(){
@@ -39,9 +43,9 @@ class UserController{
         $view->display();
     }
 
-    public function reset(){
+    public function reset($username){
         $view = new Reset();
-        $view->display();
+        $view->display($username);
     }
 
     public function do_reset(){
