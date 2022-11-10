@@ -6,11 +6,19 @@
 * Description: Define class to display register page
 */
 
+/*
+ * Page success text:
+ *      Your account has been successfully created.
+ * Page fail text:
+ *      Your last attempt for creating an account failed. Please try again.
+ */
+
 // define register class
 class Register extends View
 {
     // display HTML page
-    public function display()
+    // pass a boolean value to tell the page if the login was successful or not
+    public function display($message)
     {
         // display header from parent
         parent::header();
@@ -18,7 +26,12 @@ class Register extends View
         <!-- HTML code -->
         <div class="top-row">CREATE AN ACCOUNT</div>
         <div class="middle-row">
-            <p>Your account has been successfully created.</p>
+            <p>
+                <?php
+                // php block for custom message
+                $message
+                ?>
+            </p>
         </div>
         <div class="bottom-row">
             <span style="float: left">Already have an account? <a href="index.php?action=login">Login</a></span>

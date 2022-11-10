@@ -10,7 +10,7 @@
 class Reset extends View
 {
     // display HTML page
-    public function display()
+    public function display($username) // pass username of the account
     {
         // display header from parent
         parent::header();
@@ -20,7 +20,7 @@ class Reset extends View
         <div class="middle-row">
             <p>Please enter a new password. Username is not changeable.</p>
             <form method="post" action="index.php?action=do_reset">
-                <div><input type="text" name="username" style="width: 99%" required="" value="scasada"
+                <div><input type="text" name="username" style="width: 99%" required="" value="<?php echo $username ?>"
                             readonly="readonly"></div>
                 <div><input type="password" name="password" style="width: 99%;" required="" minlength="5"
                             placeholder="Password, 5 characters minimum"></div>
