@@ -27,28 +27,73 @@ class UserModel{
     }
 
     public function add_user(){
-        //hash the user's password to insert into DB
-        $hashPassword = password_hash($_POST['password']);
+        //Check that the post data has been received
+        if (!filter_has_var(INPUT_POST, 'username') ||
+            !filter_has_var(INPUT_POST, 'password') ||
+            !filter_has_var(INPUT_POST, 'email') ||
+            !filter_has_var(INPUT_POST, 'firstname') ||
+            !filter_has_var(INPUT_POST, 'lastname')){
+
+            return false;
+        }
+        $username = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING)));
+        $email = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL)));
+        $firstname = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING)));
+        $lastname = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING)));
+        $hashPassword = password_hash($this->dbConnection->real_escape_string(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING)));
 
         //sql statement
-        $sql = "INSERT INTO " . $this->tblUser . "('username', 'password', 'email', 'firstname', 'lastname') VALUES (";
+        $sql = "INSERT INTO $this->tblUser (username, password, email, firstname, lastname) VALUES ('$username', '$hashPassword', '$email', '$firstname', '$lastname')";
+
+        $query = $this->dbConnection->query($sql);
+
+        if (!$query){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     public function verify_user()
     {
-        $hashPassword = password_hash($_POST['password']);
-        //sql statement
-        $sql = "SELECT * FROM" . $this->tblUser . "WHERE username = \"" . $_POST['username'] . "\" AND password = \"" . $hashPassword . "\"";
+        $username = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING)));
+        $password = $this->dbConnection->real_escape_string(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
+
+        $sql = "SELECT * FROM $this->tblUser WHERE username = '$username'";
 
         $query = $this->dbConnection->query($sql);
 
-        if (!$query) {
+        if (!$query || $query->num_rows == 0){
             return false;
-        } else if ($query->num_rows == 0) {
-            return false;
-        } else {
-            $_COOKIE['username'] = $query->username;
+        }
+        if(password_verify($password, $query->password)){
+            set_cookie("username", $query->username);
             return true;
         }
+
+    }
+
+    public function logout(){
+        if(isset($_COOKIE["username"])){
+            unset($_COOKIE["username"]);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function reset_password(){
+        if (!filter_has_var(INPUT_POST, 'password')){
+            return false;
+        }
+
+        $username = $_COOKIE["username"];
+        $password = password_hash($this->dbConnection->real_escape_string(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING)));
+
+        $sql = "UPDATE " . $this->tblUser . " SET password='$password' WHERE username='$username'";
+
+        return $this->dbConnection->query($sql);
     }
 }
