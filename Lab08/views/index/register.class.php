@@ -6,14 +6,16 @@
 * Description: Define class to display register page
 */
 
+// define register class
 class Register extends View
 {
-
+    // display HTML page
     public function display()
     {
+        // display header from parent
         parent::header();
         ?>
-        <!--HTML code-->
+        <!-- HTML code -->
         <div class="top-row">CREATE AN ACCOUNT</div>
         <div class="middle-row">
             <p>Your account has been successfully created.</p>
@@ -23,6 +25,7 @@ class Register extends View
             <span style="float: right"></span>
         </div>
         <?php
+        // display header from parent
         parent::footer();
     }
 }
