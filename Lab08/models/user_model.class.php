@@ -12,9 +12,10 @@ class UserModel{
     private $db;
     private $dbConnection;
     static private $_instance = NULL;
+    private $tblUser;
 
     private function __construct(){
-        $this->db = Database::getDatabase();
+        $this->db = Database::getInstance();
         $this->dbConnection = $this->db->getConnection();
         $this->tblUser = $this->db->getUserTable();
 

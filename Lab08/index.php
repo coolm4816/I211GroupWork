@@ -41,7 +41,7 @@ else if ($action === 'error'){
 }
 
 else if ($action === 'register'){
-    $user_controller->register();
+    $user_controller->register("test");
 
 
 }
