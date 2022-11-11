@@ -35,6 +35,7 @@ class UserController{
         $view->display();
     }
 
+    //verify the user account
     public function verify($message){
         $this->user_model->verify_user();
         $view = new Verify();
@@ -42,6 +43,7 @@ class UserController{
 
     }
 
+    //logout
     public function logout(){
         $this->user_model->logout();
         $view = new Logout();
@@ -49,12 +51,14 @@ class UserController{
 
     }
 
+    //reset the password and view the reset page
     public function reset($username){
         $view = new Reset();
         $this->do_reset();
         $view->display($username);
     }
 
+    //reset the password
     public function do_reset(){
         $reset = $this->user_model->reset_password();
 
@@ -65,6 +69,7 @@ class UserController{
         }
     }
 
+    //define error method
     public function error($message){
         $error = new UserError();
         $error->display($message);
