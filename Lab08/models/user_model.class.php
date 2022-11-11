@@ -46,7 +46,7 @@ class UserModel{
         $hashPassword = password_hash($this->dbConnection->real_escape_string(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING)));
 
         //sql statement
-        $sql = "INSERT INTO $this->tblUser ('username', 'password', 'email', 'firstname', 'lastname') VALUES ('$username', '$hashPassword', '$email', '$firstname', '$lastname')";
+        $sql = "INSERT INTO '$this->tblUser' ('username', 'password', 'email', 'firstname', 'lastname') VALUES ('$username', '$hashPassword', '$email', '$firstname', '$lastname')";
 
         //run the query
         $query = $this->dbConnection->query($sql);
