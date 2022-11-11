@@ -12,7 +12,7 @@ class UserController{
 
     // constructor
     public function __construct() {
-        $this->user_model = new UserModel();
+        $this->user_model = UserModel::getUserModel();
     }
     // define method to display index page
     public function index(){
