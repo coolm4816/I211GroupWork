@@ -11,10 +11,9 @@ class UserController{
     private $user_model;
 
     // constructor
-    public function __construct(){
-        $this->user_model = UserModel::getUserModel();
+    public function __construct() {
+        $this->user_model = new UserModel();
     }
-
     // define method to display index page
     public function index(){
         $view = new Index();
