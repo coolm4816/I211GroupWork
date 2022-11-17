@@ -17,8 +17,8 @@ class CarIndexView extends IndexView {
         </script>
         <!--create the search bar -->
         <div id="searchbar">
-            <form method="get" action="<?= BASE_URL ?>/movie/search">
-                <input type="text" name="query-terms" id="searchtextbox" placeholder="Search movies by title" autocomplete="off" onkeyup="handleKeyUp(event)">
+            <form method="get" action="<?= BASE_URL ?>/car/search">
+                <input type="text" name="query-terms" id="searchtextbox" placeholder="Search cars by title" autocomplete="off" onkeyup="handleKeyUp(event)">
                 <input type="submit" value="Go" />
             </form>
             <div id="suggestionDiv"></div>

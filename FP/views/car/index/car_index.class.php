@@ -8,23 +8,23 @@
 
 class CarIndex extends CarIndexView {
     /*
-     * the display method accepts an array of movie objects and displays
+     * the display method accepts an array of car objects and displays
      * them in a grid.
      */
 
     public function display($cars) {
         //display page header
-        parent::displayHeader("List All Movies");
+        parent::displayHeader("List All Cars");
 
         ?>
-        <div id="main-header"> Movies in the Library</div>
+        <div id="main-header"> Cars in the Library</div>
 
         <div class="grid-container">
             <?php
             if ($cars === 0) {
                 echo "No cars was found.<br><br><br><br><br>";
             } else {
-                //display cars in a grid; six movies per row
+                //display cars in a grid; six cars per row
                 foreach ($cars as $car) {
                     $id = $car->getId();
                     $make = $car->getMake();
@@ -35,7 +35,7 @@ class CarIndex extends CarIndexView {
                         $image = BASE_URL . "/" . MOVIE_IMG . $image;
                     }
 
-                    echo "<div class='item'><p><a href='", BASE_URL, "/movie/detail/$id'><img src='" . $image .
+                    echo "<div class='item'><p><a href='", BASE_URL, "/car/detail/$id'><img src='" . $image .
                         "'></a><span>$make<br>Rated $model<br>" . $year . "</span></p></div>";
 
                 }

@@ -14,8 +14,8 @@ class Database {
         'login' => 'phpuser',
         'password' => 'phpuser',
         'database' => 'rentalcar_db',
-        'tblUser' => 'users',
-        'tblCar' => 'car',
+        'tblUser' => 'customers',
+        'tblCar' => 'cars',
         'tblCarCategories' => 'car_categories'
     );
     //define the database connection object
