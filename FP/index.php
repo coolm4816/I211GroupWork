@@ -2,8 +2,8 @@
 <?php
 
 /*
- * Author: Matt Cool
- * Date: 11/8/22
+ * Author: Matt Cool, Steven Casada, Jawon Winbush
+ * Date: 11/16/22
  * Name: index.php
  * Description: index file, retrieve the action and invoke the proper method
  */
