@@ -1,9 +1,9 @@
 <?php
 
 /* Author: Matt Cool, Steven Casada, Jawon Winbush
-* Date: 11/8/22
+ * Date: 11/8/22
  * Name: database.class.php
- * Description: the Database class sets the database details.
+ * Description: 
  */
 
 class Database {
