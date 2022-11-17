@@ -6,7 +6,7 @@ class Car {
     private $id, $make, $model, $year, $image, $description;
 
     // define constructor
-    public function __construct($id, $make, $model, $year, $image, $description) {
+    public function __construct($make, $model, $year, $image, $description) {
         $this->make = $make;
         $this->model = $model;
         $this->year = $year;

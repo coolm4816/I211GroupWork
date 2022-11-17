@@ -14,7 +14,9 @@ class Database {
         'login' => 'phpuser',
         'password' => 'phpuser',
         'database' => 'rentalcar_db',
-        'tblUser' => 'users'
+        'tblUser' => 'users',
+        'tblCar' => 'car',
+        'tblCarCategories' => 'car_categories'
     );
     //define the database connection object
     private $objDBConnection = NULL;
@@ -47,8 +49,18 @@ class Database {
         return $this->objDBConnection;
     }
 
-    //returns the name of the table storing books
+    //returns the name of the table storing users
     public function getUserTable() {
         return $this->param['tblUser'];
+    }
+
+    // returns the name of the table storing cars
+    public function getCarTable() {
+        return $this->param['tblCar'];
+    }
+
+    // returns the name of the table storing car category
+    public function getCarCategoriesTable() {
+        return $this->param['tblCarCategories'];
     }
 }

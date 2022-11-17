@@ -27,8 +27,8 @@ class CarIndex extends CarIndexView {
                 //display cars in a grid; six movies per row
                 foreach ($cars as $car) {
                     $id = $car->getId();
-                    $title = $car->getMake();
-                    $rating = $car->getModel();
+                    $make = $car->getMake();
+                    $model = $car->getModel();
                     $year = $car->getYear();
                     $image = $car->getImage();
                     if (strpos($image, "http://") === false AND strpos($image, "https://") === false) {
@@ -36,7 +36,7 @@ class CarIndex extends CarIndexView {
                     }
 
                     echo "<div class='item'><p><a href='", BASE_URL, "/movie/detail/$id'><img src='" . $image .
-                        "'></a><span>$title<br>Rated $rating<br>" . $year . "</span></p></div>";
+                        "'></a><span>$make<br>Rated $model<br>" . $year . "</span></p></div>";
 
                 }
             }

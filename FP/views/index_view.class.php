@@ -31,9 +31,9 @@ class IndexView {
                 <div id="left">
                     <img src='<?= BASE_URL ?>/www/img/logo.png' style="width: 180px; border: none" />
                     <span style='color: #000; font-size: 36pt; font-weight: bold; vertical-align: top'>
-                                    Media Library!
+                                    Car Website
                                 </span>
-                    <div style='color: #000; font-size: 14pt; font-weight: bold'>An interactive application designed with MVC pattern</div>
+                    <div style='color: #000; font-size: 14pt; font-weight: bold'>Rent a car or something. idk?</div>
                 </div>
             </a>
             <div id="right">
