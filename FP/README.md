@@ -1,3 +1,3 @@
-I211 Final Project
+<h1>I211 Final Project</h1>
 
-Rental Car Agency
+<h2>Rental Car Agency</h2>
