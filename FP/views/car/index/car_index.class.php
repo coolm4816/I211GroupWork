@@ -36,7 +36,7 @@ class CarIndex extends CarIndexView {
                     }
 
                     echo "<div class='item'><p><a href='", BASE_URL, "/car/detail/$id'><img width= 150px src='" . $image .
-                        "'><br></a><span>$make<br>Rated $model<br>" . $year . "</span></p></div>";
+                        "'><br></a><span>$make<br>$model<br>" . $year . "</span></p></div>";
 
                 }
             }
