@@ -49,7 +49,6 @@ class CarModel {
     /*
      * the list_car method retrieves all cars from the database and
      * returns an array of car objects if successful or false if failed.
-     * car should also be filtered by ratings and/or sorted by titles or rating if they are available.
      */
 
     public function list_car() {
@@ -59,8 +58,12 @@ class CarModel {
          * WHERE ...
          */
 
-        $sql = "SELECT * FROM " . $this->tblCar . "," . $this->tblCarCategories .
-            " WHERE " . $this->tblCar . "category=" . $this->tblCarCategories . "category_id";
+
+
+         $sql = "SELECT * FROM " . $this->tblCar . "," . $this->tblCarCategories .
+            " WHERE " . $this->tblCar . ".category_id=" . $this->tblCarCategories . ".category_id";
+
+
 
         try {
             //execute the query
@@ -83,7 +86,7 @@ class CarModel {
                 $car = new Car(stripslashes($obj->make), stripslashes($obj->model), stripslashes($obj->year), stripslashes($obj->image), stripslashes($obj->description));
 
                 //set the id for the car
-                $car->setId($obj->id);
+                $car->setId($obj->car_id);
 
                 //add the car into the array
                 $cars[] = $car;

@@ -17,7 +17,7 @@ class CarIndex extends CarIndexView {
         parent::displayHeader("List All Cars");
 
         ?>
-        <div id="main-header"> Cars in the Library</div>
+        <div id="main-header"> Cars on the Lot</div>
 
         <div class="grid-container">
             <?php
@@ -35,8 +35,8 @@ class CarIndex extends CarIndexView {
                         $image = BASE_URL . "/" . MOVIE_IMG . $image;
                     }
 
-                    echo "<div class='item'><p><a href='", BASE_URL, "/car/detail/$id'><img src='" . $image .
-                        "'></a><span>$make<br>Rated $model<br>" . $year . "</span></p></div>";
+                    echo "<div class='item'><p><a href='", BASE_URL, "/car/detail/$id'><img width= 150px src='" . $image .
+                        "'><br></a><span>$make<br>Rated $model<br>" . $year . "</span></p></div>";
 
                 }
             }

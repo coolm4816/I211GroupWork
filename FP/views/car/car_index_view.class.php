@@ -12,10 +12,9 @@ class CarIndexView extends IndexView {
         parent::displayHeader($title)
         ?>
         <script>
-            //the media type
-            var media = "car";
+
         </script>
-        <!--create the search bar -->
+        <!--create the search bar
         <div id="searchbar">
             <form method="get" action="<?= BASE_URL ?>/car/search">
                 <input type="text" name="query-terms" id="searchtextbox" placeholder="Search cars by title" autocomplete="off" onkeyup="handleKeyUp(event)">
@@ -23,6 +22,7 @@ class CarIndexView extends IndexView {
             </form>
             <div id="suggestionDiv"></div>
         </div>
+        -->
         <?php
     }
 
