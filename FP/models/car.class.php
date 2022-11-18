@@ -1,4 +1,10 @@
 <?php
+/**
+ * Author: Matt Cool, Steven Casada, Jawon Winbush
+ * Date: 11/17/2022
+ * File: car.class.php
+ * Description: define a class that describes car data
+ */
 
 class Car {
 

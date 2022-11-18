@@ -1,9 +1,9 @@
 <?php
 /**
- * Author: Steven Casada
+ * Author: Matt Cool, Steven Casada, Jawon Winbush
  * Date: 11/17/2022
  * File: car_index.class.php
- * Description:
+ * Description: display a list of cars
  */
 
 class CarIndex extends CarIndexView {

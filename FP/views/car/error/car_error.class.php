@@ -1,9 +1,9 @@
 <?php
 /**
- * Author: Steven Casada
+ * Author: Matt Cool, Steven Casada, Jawon Winbush
  * Date: 11/17/2022
  * File: car_error.class.php
- * Description:
+ * Description: display error page
  */
 
 class CarError extends CarIndexView {

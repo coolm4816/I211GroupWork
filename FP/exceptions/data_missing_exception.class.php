@@ -1,9 +1,9 @@
 <?php
 /**
- * Author: Steven Casada
+ * Author: Matt Cool, Steven Casada, Jawon Winbush
  * Date: 11/17/2022
  * File: data_missing_exception.class.php
- * Description:
+ * Description: models a data missing exception
  */
 
 class DataMissingException extends Exception {

@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Author: Matt Cool, Steven Casada, Jawon Winbush
+ * Date: 11/17/2022
+ * File: car_model.class.php
+ * Description: define class to get car data from the database
+ */
 
 class CarModel {
 
