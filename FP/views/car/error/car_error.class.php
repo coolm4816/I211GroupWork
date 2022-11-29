@@ -31,7 +31,7 @@ class CarError extends CarIndexView {
             </tr>
         </table>
         <br><br><br><br><hr>
-        <a href="<?= BASE_URL ?>/movie/index">Back to movie list</a>
+        <a href="<?= BASE_URL ?>/car/index">Back to car list</a>
         <?php
         //display page footer
         parent::displayFooter();
