@@ -35,7 +35,7 @@ class CarSearch extends CarIndexView {
                     $make = $car->getMake();
                     $model = $car->getModel();
                     $year = $car->getYear();
-                    $carCategory = $car->getCarCategory();
+                    //$carCategory = $car->getCarCategory();
                     $image = $car->getImage();
                     if (strpos($image, "http://") === false AND strpos($image, "https://") === false) {
                         $image = BASE_URL . "/" . CAR_IMG . $image;

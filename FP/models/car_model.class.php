@@ -114,9 +114,9 @@ class CarModel {
      */
 
     public function view_car($id) {
-        //the select ssql statement
+        //the select sql statement
         $sql = "SELECT * FROM " . $this->tblCar . "," . $this->tblCarCategories .
-            " WHERE " . $this->tblCar . ".category=" . $this->tblCarCategories . ".category_id" .
+            " WHERE " . $this->tblCar . ".category_id=" . $this->tblCarCategories . ".category_id" .
             " AND " . $this->tblCar . ".id='$id'";
 
         //execute the query
@@ -212,6 +212,8 @@ class CarModel {
         //execute the query
         $query = $this->dbConnection->query($sql);
 
+        $this->console_log($sql);
+
         // the search failed, return false.
         if (!$query)
             return false;
@@ -229,7 +231,7 @@ class CarModel {
             $car = new Car($obj->make, $obj->model, $obj->year, $obj->image, $obj->price, $obj->description);
 
             //set the id for the car
-            $car->setId($obj->id);
+            $car->setId($obj->car_id);
 
             //add the car into the array
             $cars[] = $car;
@@ -290,6 +292,17 @@ class CarModel {
             $category[$obj->category] = $obj->category_id;
         }
         return $categories;
+    }
+    // TODO delete this function
+    // **TESTING FUNCTION PLEASE DELETE BEFORE LAUNCH**
+    function console_log($output, $with_script_tags = true)
+    {
+        $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
+            ');';
+        if ($with_script_tags) {
+            $js_code = '<script>' . $js_code . '</script>';
+        }
+        echo $js_code;
     }
 
 }
