@@ -88,7 +88,7 @@ class CarModel {
 
             //loop through all rows in the returned recordsets
             while ($obj = $query->fetch_object()) {
-                $car = new Car(stripslashes($obj->make), stripslashes($obj->model), stripslashes($obj->year), stripslashes($obj->image), stripslashes($obj->description));
+                $car = new Car(stripslashes($obj->make), stripslashes($obj->model), stripslashes($obj->year), stripslashes($obj->image), stripslashes($obj->price), stripslashes($obj->description));
 
                 //set the id for the car
                 $car->setId($obj->car_id);
@@ -126,7 +126,7 @@ class CarModel {
             $obj = $query->fetch_object();
 
             //create a car object
-            $car = new Car(stripslashes($obj->make), stripslashes($obj->model), stripslashes($obj->year), stripslashes($obj->image), stripslashes($obj->description));
+            $car = new Car(stripslashes($obj->make), stripslashes($obj->model), stripslashes($obj->year), stripslashes($obj->image), stripslashes($obj->price), stripslashes($obj->description));
 
             //set the id for the car
             $car->setId($obj->id);
@@ -199,9 +199,9 @@ class CarModel {
     //search the database for cars that match words in titles. Return an array of cars if succeed; false otherwise.
     public function search_car($terms) {
         $terms = explode(" ", $terms); //explode multiple terms into an array
-        //select statement for AND serach
+        //select statement for AND search
         $sql = "SELECT * FROM " . $this->tblCar . "," . $this->tblCarCategories .
-                " WHERE " . $this->tblCar . ".category=" . $this->tblCarCategories . ".category_id AND (1";
+            " WHERE " . $this->tblCar . ".category_id=" . $this->tblCarCategories . ".category_id AND (1";
 
         foreach ($terms as $term) {
             $sql .= " AND model LIKE '%" . $term . "%'";

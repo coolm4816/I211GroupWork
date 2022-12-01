@@ -8,6 +8,9 @@
 
 /* styles for grid from the car DB */
 
+:root {
+    --accent-color1: #7862ff;
+}
 .grid-container {
     margin: 10px auto 10px auto;
     width: 960px;
@@ -27,4 +30,34 @@
     color: rgb(0, 0, 0);
     font-size: 16px;
     display: inline-block;
+}
+
+#searchbar {
+    float: right;
+    margin: 2em;
+}
+
+#wrapper {
+    background-color: var(--accent-color1);
+    padding: 2em;
+    box-shadow: 0 4px 8px 0 rgb(0, 0, 0, 0.2), 0 6px 20px 0 rgb(0, 0, 0, 0.19);
+    border-radius: 4px;
+}
+
+#wrapper * {
+    color: white;
+}
+
+#footer {
+    text-align: center;
+    background-color: #cccccc;
+    padding: 0.3em;
+}
+
+#main-header {
+    margin-top: 0.6em;
+    padding-left: 1em;
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--accent-color1);
 }

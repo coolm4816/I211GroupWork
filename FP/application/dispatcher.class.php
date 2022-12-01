@@ -37,7 +37,7 @@ class Dispatcher
 
         //Now, the url_array contains controller name, followed by method name, and zero, one or more arguments
         //get controller name or assign the default controller "WelcomeController"
-        $controllerName = !empty($url_array[0]) ? ucfirst($url_array[0]) . 'Controller' : 'CarController';
+        $controllerName = !empty($url_array[0]) ? ucfirst($url_array[0]) . 'Controller' : 'HomeController';
 
         //create controller instance
         if (!class_exists($controllerName)) {

@@ -40,17 +40,19 @@ class CarSearch extends CarIndexView {
                     if (strpos($image, "http://") === false AND strpos($image, "https://") === false) {
                         $image = BASE_URL . "/" . CAR_IMG . $image;
                     }
-                    if ($i % 6 == 0) {
-                        echo "<div class='row'>";
-                    }
-
+//                    if ($i % 6 == 0) {
+//                        echo "<div class='row'>";
+//                    }
+//
+//                    echo "<div class='col'><p><a href='" . BASE_URL . "/car/detail/$id'><img src='" . $image .
+//                    "'></a>" . /*<span>$make<br>$model<br>$carCategory</span>*/"</p></div>";
+//                    ?>
+<!--                    --><?php
+//                    if ($i % 6 == 5 || $i == count($cars) - 1) {
+//                        echo "</div>";
+//                    }
                     echo "<div class='col'><p><a href='" . BASE_URL . "/car/detail/$id'><img src='" . $image .
-                    "'></a>" . /*<span>$make<br>$model<br>$carCategory</span>*/"</p></div>";
-                    ?>
-                    <?php
-                    if ($i % 6 == 5 || $i == count($cars) - 1) {
-                        echo "</div>";
-                    }
+                        "'></a><span>$make<br>$model<br>$year</span></p></div>";
                 }
             }
             ?>  
