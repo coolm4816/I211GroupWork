@@ -212,8 +212,6 @@ class CarModel {
         //execute the query
         $query = $this->dbConnection->query($sql);
 
-        $this->console_log($sql);
-
         // the search failed, return false.
         if (!$query)
             return false;
@@ -293,16 +291,4 @@ class CarModel {
         }
         return $categories;
     }
-    // TODO delete this function
-    // **TESTING FUNCTION PLEASE DELETE BEFORE LAUNCH**
-    function console_log($output, $with_script_tags = true)
-    {
-        $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
-            ');';
-        if ($with_script_tags) {
-            $js_code = '<script>' . $js_code . '</script>';
-        }
-        echo $js_code;
-    }
-
 }

@@ -30,13 +30,14 @@ class CarIndex extends CarIndexView {
                     $make = $car->getMake();
                     $model = $car->getModel();
                     $year = $car->getYear();
+                    $price = $car->getPrice();
                     $image = $car->getImage();
                     if (strpos($image, "http://") === false AND strpos($image, "https://") === false) {
                         $image = BASE_URL . "/" . MOVIE_IMG . $image;
                     }
 
                     echo "<div class='item'><p><a href='", BASE_URL, "/car/detail/$id'><img width= 200px src='" . $image .
-                        "'><br></a><div class='carDetails'><span class='make'>$make</span> <span class='model'>$model</span><br><span class='year'>" . $year . "</span></div></p></div>";
+                        "'><br></a><div class='carDetails'><span class='make'>$make</span> <span class='model'>$model</span><br><span class='year'>" . $year . "</span><br><span>$$price per day</span></div></p></div>";
 
                 }
             }

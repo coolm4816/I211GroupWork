@@ -35,6 +35,7 @@ class CarSearch extends CarIndexView {
                     $make = $car->getMake();
                     $model = $car->getModel();
                     $year = $car->getYear();
+                    $price = $car->getPrice();
                     //$carCategory = $car->getCarCategory();
                     $image = $car->getImage();
                     if (strpos($image, "http://") === false AND strpos($image, "https://") === false) {
@@ -52,7 +53,7 @@ class CarSearch extends CarIndexView {
               echo "</div>";
         }
                     echo "<div class='col'><p><a href='" . BASE_URL . "/car/detail/$id'><img src='" . $image .
-                        "'></a><span>$make<br>$model<br>$year</span></p></div>";
+                        "'></a><span>$make<br>$model<br>$year</span><br><span>$$price per day</span></p></div>";
                 }
             }
             ?>  

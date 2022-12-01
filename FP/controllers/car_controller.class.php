@@ -61,7 +61,7 @@ class CarController
 
         if ($cars === 0) {
             $search = new CarSearch();
-            $search->display("", $cars);
+            $search->display($query_terms, $cars);
         } else {
             //matched cars for display
             $search = new CarSearch();
@@ -77,14 +77,14 @@ class CarController
         $cars = $this->car_model->search_car($query_terms);
 
         //retrieve all cars to be stored in following array
-        $models = array();
+        $info = array();
         if ($cars) {
             foreach ($cars as $car) {
-                $models[] = $car->getModel();
+                $info[] = $car->getMake() . " ".$car->getModel();
             }
         }
 
-        echo json_encode($models);
+        echo json_encode($info);
     }
 
     //to handle and display all types of errors
