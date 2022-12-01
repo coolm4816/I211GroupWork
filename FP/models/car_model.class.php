@@ -204,7 +204,7 @@ class CarModel {
             " WHERE " . $this->tblCar . ".category_id=" . $this->tblCarCategories . ".category_id AND (1";
 
         foreach ($terms as $term) {
-            $sql .= " AND model LIKE '%" . $term . "%'";
+            $sql .= " AND model LIKE '%" . $term . "%' OR make LIKE '" . $term . "%'";
         }
 
         $sql .= ")";
