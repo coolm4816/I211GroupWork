@@ -18,7 +18,7 @@ class CarIndex extends CarIndexView {
 
         ?>
         <div id="main-header"> Cars on the Lot</div>
-
+        <div class="container">
         <div class="grid-container">
             <?php
             if ($cars === 0) {
@@ -35,12 +35,13 @@ class CarIndex extends CarIndexView {
                         $image = BASE_URL . "/" . MOVIE_IMG . $image;
                     }
 
-                    echo "<div class='item'><p><a href='", BASE_URL, "/car/detail/$id'><img width= 150px src='" . $image .
-                        "'><br></a><span>$make<br>$model<br>" . $year . "</span></p></div>";
+                    echo "<div class='item'><p><a href='", BASE_URL, "/car/detail/$id'><img width= 200px src='" . $image .
+                        "'><br></a><div class='carDetails'><span class='make'>$make</span> <span class='model'>$model</span><br><span class='year'>" . $year . "</span></div></p></div>";
 
                 }
             }
             ?>
+        </div>
         </div>
 
         <?php

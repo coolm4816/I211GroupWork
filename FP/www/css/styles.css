@@ -11,19 +11,52 @@
 :root {
     --accent-color1: #7862ff;
 }
+
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+
+}
+
+.container{
+    width: 100%;
+    background-color: #F8F8F8
+}
 .grid-container {
     margin: 10px auto 10px auto;
-    width: 960px;
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
+
 }
 
+.make, .model{
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
 .item {
     float: left;
-    min-height: 1px;
-    padding: 16px;
+    min-height: 250px;
+    width: 250px;
+    padding: 20px;
     text-align: center;
+    background-color: #FFF;
+    margin: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px -10px rgb(0 0 0 / 50%);
+    transition: .2s ease-in-out;
+}
+
+.item:hover{
+    margin-top: 35px;
+    margin-bottom: 45px;
+    transition: .2s ease-in-out
+}
+
+.item .carDetails{
+    margin-top: 30px;
 }
 
 .rcd-numbers {
@@ -37,11 +70,22 @@
     margin: 2em;
 }
 
+#searchtextbox{
+    font-size: 16px;
+    padding: 16px 30px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 0, 0, 60%);
+    margin-right: 10px;
+
+}
+
 #wrapper {
     background-color: var(--accent-color1);
     padding: 2em;
-    box-shadow: 0 4px 8px 0 rgb(0, 0, 0, 0.2), 0 6px 20px 0 rgb(0, 0, 0, 0.19);
-    border-radius: 4px;
+    width: 100%;
+    left: 0;
+    top: 0;
 }
 
 #wrapper * {
@@ -56,8 +100,29 @@
 
 #main-header {
     margin-top: 0.6em;
+    padding-bottom: 1em;
     padding-left: 1em;
     font-size: 2em;
     font-weight: bold;
     color: var(--accent-color1);
+    background-color: #FFF;
+
 }
+
+input[type=submit]{
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid var(--accent-color1);
+    padding: 6px 12px;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition:.2s ease-in-out;
+    color: var(--accent-color1);
+}
+
+input[type=submit]:hover {
+    color: #fff;
+    background-color: var(--accent-color1);
+    border-color: var(--accent-color1);
+}
+
