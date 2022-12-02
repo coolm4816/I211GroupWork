@@ -15,9 +15,10 @@ class HomeIndex extends IndexView {
         <div id="main-header">Car Website</div>
 
         <div>
-            <a href="<?= BASE_URL ?>/car/index">
-                View Lot
-            </a>
+                <a id="viewInventory" href="<?= BASE_URL ?>/car/index">
+                View Inventory
+                </a>
+
         </div>
 
         <?php
