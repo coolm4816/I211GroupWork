@@ -24,7 +24,8 @@ class CarSearch extends CarIndexView {
         <hr>
 
        <!-- display all records in a grid -->
-               <div class="grid-container">
+         <div class="container">
+             <div class="grid-container">
             <?php
             if ($cars === 0) {
                 echo "No car was found.<br><br><br><br><br>";
@@ -52,12 +53,13 @@ class CarSearch extends CarIndexView {
         if ($i % 6 == 5 || $i == count($cars) - 1) {
               echo "</div>";
         }
-                    echo "<div class='col'><p><a href='" . BASE_URL . "/car/detail/$id'><img src='" . $image .
-                        "'></a><span>$make<br>$model<br>$year</span><br><span>$$price per day</span></p></div>";
+                    echo "<div class='item'><p><a href='" . BASE_URL . "/car/detail/$id'><img width= 200px src='" . $image .
+                        "'><br></a><div class='carDetails'><span class='make'>$make</span> <span class='model'>$model</span><br><span class='year'>" . $year . "</span><br><span>$$price per day</span></div></p></div>";
                 }
             }
             ?>  
         </div>
+         </div>
         <a href="<?= BASE_URL ?>/car/index">Go to car list</a>
         <?php
         //display page footer

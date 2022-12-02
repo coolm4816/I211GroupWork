@@ -22,7 +22,7 @@ class CarIndex extends CarIndexView {
         <div class="grid-container">
             <?php
             if ($cars === 0) {
-                echo "No cars was found.<br><br><br><br><br>";
+                echo "No cars were found.<br><br><br><br><br>";
             } else {
                 //display cars in a grid; six cars per row
                 foreach ($cars as $car) {
