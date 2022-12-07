@@ -43,8 +43,38 @@ class UserModel{
     }
 
     //method for adding cars to the database
-    public function add_car(){
+    public function add_car($make, $model, $year, $image, $price){
 
+        try{
+
+            $sql = "INSERT INTO" . $this->tblCar . "(make, model, year, image, price) . VALUES ('$make', '$model', '$year', '$image', '$price')";
+
+            //execute the query
+            $query = $this->dbConnection->query($sql);
+
+            if (!$query) {
+                throw new DatabaseExecutionException("Adding car failed");
+            }
+
+            return $query;
+        }
+        catch (DataMissingException $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+        }
+        catch (DatabaseExecutionException $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+        }
+        catch (InvalidDateException $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+        }
+        catch (Exception $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+        }
     }
+
 
 }
