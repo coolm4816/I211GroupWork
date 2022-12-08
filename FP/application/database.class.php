@@ -17,6 +17,7 @@ class Database {
         'tblUser' => 'customers',
         'tblCar' => 'cars',
         'tblCarCategories' => 'car_categories'
+       //'tblInventory' => 'inventory'
     );
     //define the database connection object
     private $objDBConnection = NULL;
@@ -63,4 +64,10 @@ class Database {
     public function getCarCategoriesTable() {
         return $this->param['tblCarCategories'];
     }
+
+    // returns the name of the table storing inventory
+    /* public function getInventory() {
+        return $this->param['tblInventory'];
+    }
+    */
 }

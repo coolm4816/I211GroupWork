@@ -155,3 +155,13 @@ input[type=submit]:hover, button:hover {
     border-color: var(--accent-color1);
 }
 
+.car-details {
+    margin: 3px;
+    border: solid 1px black;
+    box-sizing: border-box;
+    letter-spacing: normal;
+    word-spacing: normal;
+    padding: 0 20px;
+    height: 50px;
+}
+

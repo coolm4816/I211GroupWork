@@ -9,16 +9,17 @@
 class Car {
 
     // private attributes
-    private $id, $make, $model, $year, $image, $price, $description;
+    private $id, $make, $model, $year, $image, $price, $description, $category;
 
     // define constructor
-    public function __construct($make, $model, $year, $image, $price, $description) {
+    public function __construct($make, $model, $year, $image, $price, $description, $category) {
         $this->make = $make;
         $this->model = $model;
         $this->year = $year;
         $this->image = $image;
         $this->price = $price;
         $this->description = $description;
+        $this->category = $category;
     }
 
     public function getId()
@@ -59,6 +60,11 @@ class Car {
     public function getDescription()
     {
         return $this->description;
+    }
+
+    public function getCategory()
+    {
+        return $this->category;
     }
 
 
