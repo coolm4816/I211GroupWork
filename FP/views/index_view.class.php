@@ -18,6 +18,7 @@ class IndexView
         <head>
             <title> <?php echo $page_title ?> </title>
             <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+            <link rel="icon" href='<?= BASE_URL ?>/www/img/odyssey.ico' type="image/png">
             <link type='text/css' rel='stylesheet' href='<?= BASE_URL ?>/www/css/styles.css'/>
             <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
             <script>
