@@ -77,7 +77,8 @@ class UserModel{
     }
 
 
-    public function verify_user() {
+    public function verify_user()
+    {
 
         // Need to verify hashed password
 
@@ -87,29 +88,33 @@ class UserModel{
 
         //go into the database and check for username
         $sql = "SELECT * FROM users WHERE (email = '" . $email . "')";
-        $result = mysqli_query($this->dbConnection,$sql);
+        $result = mysqli_query($this->dbConnection, $sql);
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $hash = $row['password'];
         $id = $row['id'];
 
 
-
-
-        if ($password == $hash ) {
+        if ($password == $hash) {
             setcookie("email", $email);
             setcookie('id', $id);
             return true;
         } else {
-            echo $hash;
             echo $row['password'];
             echo $row['id'];
             echo $row['fname'];
             return false;
         }
-
-
-
     }
+
+    //unset a cookie to log the user out
+    public function logout() {
+        unset($_COOKIE['id']);
+        unset($_COOKIE['email']);
+        return true;
+    }
+
+
+
 
 
 

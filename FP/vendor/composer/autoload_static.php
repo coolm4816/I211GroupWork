@@ -33,6 +33,7 @@ class ComposerStaticInitfe014b03f0bb186bd4ce9f1175abf8b3
         'InvalidDateException' => __DIR__ . '/../..' . '/exceptions/invalid_date_exception.class.php',
         'Login' => __DIR__ . '/../..' . '/views/login/login.class.php',
         'LoginIndex' => __DIR__ . '/../..' . '/views/login/login_index.class.php',
+        'Logout' => __DIR__ . '/../..' . '/views/login/logout.class.php',
         'User' => __DIR__ . '/../..' . '/models/user.class.php',
         'UserController' => __DIR__ . '/../..' . '/controllers/user_controller.class.php',
         'UserModel' => __DIR__ . '/../..' . '/models/user_model.class.php',

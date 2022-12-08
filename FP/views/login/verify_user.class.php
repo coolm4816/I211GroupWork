@@ -21,8 +21,7 @@ class VerifyUser extends LoginIndex {
             </div>
 
             <div class="options">
-                <span style="float: left">Want to log out?<a href="../../index.php">Logout</a></span>
-                <span style="float: right">Reset Password?<a href="../../index.php">Reset</a></span>
+                <span style="float: left"><a href="<?=BASE_URL?>/user/logout">Logout</a></span>
             </div>
 
             <?php
@@ -35,8 +34,7 @@ class VerifyUser extends LoginIndex {
             </div>
 
             <div class="options">
-                <span style="float: left">Already have an account? <a href="../../index.php">Login</a></span>
-                <span style="float: right">Reset Password?<a href="../../index.php">Reset</a></span>
+                <span style="float: left"><a href="<?=BASE_URL?>/user/login">Log in</a></span>
             </div>
 
             <?php

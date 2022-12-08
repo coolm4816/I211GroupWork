@@ -32,6 +32,7 @@ return array(
     'InvalidDateException' => $baseDir . '/exceptions/invalid_date_exception.class.php',
     'Login' => $baseDir . '/views/login/login.class.php',
     'LoginIndex' => $baseDir . '/views/login/login_index.class.php',
+    'Logout' => $baseDir . '/views/login/logout.class.php',
     'User' => $baseDir . '/models/user.class.php',
     'UserController' => $baseDir . '/controllers/user_controller.class.php',
     'UserModel' => $baseDir . '/models/user_model.class.php',

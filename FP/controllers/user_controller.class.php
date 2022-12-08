@@ -44,7 +44,7 @@ class UserController {
         //execute the logout function
         $this->user_model->logout();
 
-        //create a logout object, output the logout page to the user
+        //Send user back to the home page
         $view = new Logout();
         $view->display();
     }
