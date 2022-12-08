@@ -92,11 +92,13 @@ class UserModel{
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $hash = $row['password'];
         $id = $row['id'];
+        $isAdmin = $row['isAdmin'];
 
 
         if ($password == $hash) {
             setcookie("email", $email);
             setcookie('id', $id);
+            setcookie('isAdmin', $isAdmin);
             return true;
         } else {
             echo $row['password'];
@@ -110,6 +112,7 @@ class UserModel{
     public function logout() {
         unset($_COOKIE['id']);
         unset($_COOKIE['email']);
+        unset($_COOKIE['isAdmin']);
         return true;
     }
 
