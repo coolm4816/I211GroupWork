@@ -34,6 +34,9 @@ class IndexView
             </span>
             <div style=' font-size: 14pt; font-weight: bold'>Rent a car!</div>
             <br><br>
+            <div id="login">
+                <a href="<?= BASE_URL ?>/user/login">Log in</a>
+            </div>
 
         </div>
         <?php
