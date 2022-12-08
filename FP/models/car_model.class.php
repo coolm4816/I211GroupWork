@@ -117,7 +117,7 @@ class CarModel {
         //the select sql statement
         $sql = "SELECT * FROM " . $this->tblCar . "," . $this->tblCarCategories .
             " WHERE " . $this->tblCar . ".category_id=" . $this->tblCarCategories . ".category_id" .
-            " AND " . $this->tblCar . ".id='$id'";
+            " AND " . $this->tblCar . ".car_id='$id'";
 
         //execute the query
         $query = $this->dbConnection->query($sql);
@@ -126,10 +126,10 @@ class CarModel {
             $obj = $query->fetch_object();
 
             //create a car object
-            $car = new Car(stripslashes($obj->make), stripslashes($obj->model), stripslashes($obj->year), stripslashes($obj->image), stripslashes($obj->price), stripslashes($obj->description));
+            $car = new Car(stripslashes($obj->make), stripslashes($obj->model), stripslashes($obj->year), stripslashes($obj->image), stripslashes($obj->price), stripslashes($obj->description), stripslashes($obj->category));
 
             //set the id for the car
-            $car->setId($obj->id);
+            $car->setId($obj->car_id);
 
             return $car;
         }
@@ -226,7 +226,7 @@ class CarModel {
 
         //loop through all rows in the returned recordsets
         while ($obj = $query->fetch_object()) {
-            $car = new Car($obj->make, $obj->model, $obj->year, $obj->image, $obj->price, $obj->description);
+            $car = new Car($obj->make, $obj->model, $obj->year, $obj->image, $obj->price, $obj->description, $obj->category);
 
             //set the id for the car
             $car->setId($obj->car_id);
