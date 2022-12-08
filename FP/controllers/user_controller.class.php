@@ -25,7 +25,7 @@ class UserController {
     public function login() {
 
         //Create a login object and call appropriate view
-        $view = new Login();
+        $view = new LoginIndex();
         $view->display();
     }
 
