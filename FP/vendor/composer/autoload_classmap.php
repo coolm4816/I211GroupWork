@@ -6,9 +6,11 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AdminAddCar' => $baseDir . '/views/car/add/admin_add_car.class.php',
     'Car' => $baseDir . '/models/car.class.php',
     'CarController' => $baseDir . '/controllers/car_controller.class.php',
     'CarDetail' => $baseDir . '/views/car/detail/car_detail.class.php',
+    'CarEdit' => $baseDir . '/views/car/edit/car_edit.class.php',
     'CarError' => $baseDir . '/views/car/error/car_error.class.php',
     'CarIndex' => $baseDir . '/views/car/index/car_index.class.php',
     'CarIndexView' => $baseDir . '/views/car/car_index_view.class.php',
@@ -28,4 +30,10 @@ return array(
     'HomeIndex' => $baseDir . '/views/home/home_index.class.php',
     'IndexView' => $baseDir . '/views/index_view.class.php',
     'InvalidDateException' => $baseDir . '/exceptions/invalid_date_exception.class.php',
+    'Login' => $baseDir . '/views/login/login.class.php',
+    'LoginIndex' => $baseDir . '/views/login/login_index.class.php',
+    'User' => $baseDir . '/models/user.class.php',
+    'UserController' => $baseDir . '/controllers/user_controller.class.php',
+    'UserModel' => $baseDir . '/models/user_model.class.php',
+    'VerifyUser' => $baseDir . '/views/login/verify_user.class.php',
 );

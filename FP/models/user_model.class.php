@@ -77,4 +77,40 @@ class UserModel{
     }
 
 
+    public function verify_user() {
+
+        // Need to verify hashed password
+
+        // retrieve values from form
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+
+        //go into the database and check for username
+        $sql = "SELECT * FROM users WHERE (email = '" . $email . "')";
+        $result = mysqli_query($this->dbConnection,$sql);
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $hash = $row['password'];
+        $id = $row['id'];
+
+
+
+
+        if ($password == $hash ) {
+            setcookie("email", $email);
+            setcookie('id', $id);
+            return true;
+        } else {
+            echo $hash;
+            echo $row['password'];
+            echo $row['id'];
+            echo $row['fname'];
+            return false;
+        }
+
+
+
+    }
+
+
+
 }

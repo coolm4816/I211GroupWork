@@ -14,7 +14,7 @@ class Database {
         'login' => 'phpuser',
         'password' => 'phpuser',
         'database' => 'rentalcar_db',
-        'tblUser' => 'customers',
+        'tblUser' => 'users',
         'tblCar' => 'cars',
         'tblCarCategories' => 'car_categories'
        //'tblInventory' => 'inventory'
