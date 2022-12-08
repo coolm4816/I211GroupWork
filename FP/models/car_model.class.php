@@ -88,7 +88,7 @@ class CarModel {
 
             //loop through all rows in the returned recordsets
             while ($obj = $query->fetch_object()) {
-                $car = new Car(stripslashes($obj->make), stripslashes($obj->model), stripslashes($obj->year), stripslashes($obj->image), stripslashes($obj->price), stripslashes($obj->description));
+                $car = new Car(stripslashes($obj->make), stripslashes($obj->model), stripslashes($obj->year), stripslashes($obj->image), stripslashes($obj->price), stripslashes($obj->description), stripslashes($obj->category));
 
                 //set the id for the car
                 $car->setId($obj->car_id);
