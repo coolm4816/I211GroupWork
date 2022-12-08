@@ -1,4 +1,5 @@
 <h1>I211 Final Project</h1>
+<p>Developed by Matt, Steven, and Jawon.</p>
 
 <h2>Rental Car Agency</h2>
 
