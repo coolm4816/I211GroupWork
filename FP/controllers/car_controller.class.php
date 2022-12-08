@@ -31,10 +31,21 @@ class CarController
         $view->display($cars);
     }
 
-    // show details of a car
-    public function detail($id)
-    {
+    //show details of a car
+    public function detail($id) {
+        //retrieve the specific movie
+        $car = $this->car_model->view_car($id);
 
+        if (!$car) {
+            //display an error
+            $message = "There was a problem displaying the movie id='" . $id . "'.";
+            $this->error($message);
+            return;
+        }
+
+        //display movie details
+        $view = new CarDetail();
+        $view->display($car);
     }
 
 
