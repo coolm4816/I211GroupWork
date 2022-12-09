@@ -242,7 +242,7 @@ class CarModel
             //query string for update
             $sql = "UPDATE " . $this->tblCar .
                 " SET make='$make', model='$model', year='$year', image='$image', "
-                . "price='$price', description='$description' WHERE id='$id'";
+                . "price='$price', description='$description' WHERE id= $id";
 
             //execute the query
             $query = $this->dbConnection->query($sql);
