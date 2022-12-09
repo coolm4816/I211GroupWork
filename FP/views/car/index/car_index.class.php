@@ -19,6 +19,9 @@ class CarIndex extends CarIndexView {
         ?>
         <div id="main-header"> Cars on the Lot</div>
         <div class="container">
+            <div style="padding: 0.6em">
+                <a href="<?= BASE_URL ?>/car/add">add a car to inventory</a>
+            </div>
         <div class="grid-container">
             <?php
             if ($cars === 0) {
@@ -33,7 +36,7 @@ class CarIndex extends CarIndexView {
                     $price = $car->getPrice();
                     $image = $car->getImage();
                     if (strpos($image, "http://") === false AND strpos($image, "https://") === false) {
-                        $image = BASE_URL . "/" . MOVIE_IMG . $image;
+                        $image = BASE_URL . "/" . CAR_IMG . $image;
                     }
 
                     echo "<div class='item'><p><a href='", BASE_URL, "/car/detail/$id'><img width= 200px src='" . $image .

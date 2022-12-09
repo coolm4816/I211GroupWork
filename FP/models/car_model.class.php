@@ -6,7 +6,8 @@
  * Description: define class to get car data from the database
  */
 
-class CarModel {
+class CarModel
+{
 
     //private data members
     private $db;
@@ -16,7 +17,8 @@ class CarModel {
     private $tblCarCategories;
 
     //To use singleton pattern, this constructor is made private. To get an instance of the class, the getCarModel method must be called.
-    private function __construct() {
+    private function __construct()
+    {
         $this->db = Database::getInstance();
         $this->dbConnection = $this->db->getConnection();
         $this->tblCar = $this->db->getCarTable();
@@ -44,7 +46,8 @@ class CarModel {
     }
 
     //static method to ensure there is just one CarModel instance
-    public static function getCarModel() {
+    public static function getCarModel()
+    {
         if (self::$_instance == NULL) {
             self::$_instance = new CarModel();
         }
@@ -56,7 +59,8 @@ class CarModel {
      * returns an array of car objects if successful or false if failed.
      */
 
-    public function list_car() {
+    public function list_car()
+    {
         /* construct the sql SELECT statement in this format
          * SELECT ...
          * FROM ...
@@ -64,10 +68,8 @@ class CarModel {
          */
 
 
-
-         $sql = "SELECT * FROM " . $this->tblCar . "," . $this->tblCarCategories .
+        $sql = "SELECT * FROM " . $this->tblCar . "," . $this->tblCarCategories .
             " WHERE " . $this->tblCar . ".category_id=" . $this->tblCarCategories . ".category_id";
-
 
 
         try {
@@ -97,12 +99,54 @@ class CarModel {
                 $cars[] = $car;
             }
             return $cars;
-        }
-        catch (DatabaseExecutionException $exc) {
+        } catch (DatabaseExecutionException $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+        } catch (Exception $exc) {
             $view = new CarError();
             $view->display($exc->getMessage());
         }
-        catch (Exception $exc) {
+    }
+
+    public function list_categories()
+    {
+        /* construct the sql SELECT statement in this format
+         * SELECT ...
+         * FROM ...
+         * WHERE ...
+         */
+
+
+        $sql = "SELECT * FROM " . $this->tblCarCategories;
+
+        try {
+            //execute the query
+            $query = $this->dbConnection->query($sql);
+
+            // if the query failed, return false.
+            if (!$query)
+                throw new DatabaseExecutionException("Error encountered when executing the SQL query");
+
+            //if the query succeeded, but no car was found.
+            if ($query->num_rows == 0)
+                return 0;
+
+            //handle the result
+            //create an array to store all returned cars
+            $cars = array();
+
+            //loop through all rows in the returned recordsets
+            while ($obj = $query->fetch_object()) {
+                $category = new Category($obj->category_id, $obj->category);
+
+                //add the category into the array
+                $categories[] = $category;
+            }
+            return $categories;
+        } catch (DatabaseExecutionException $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+        } catch (Exception $exc) {
             $view = new CarError();
             $view->display($exc->getMessage());
         }
@@ -113,7 +157,8 @@ class CarModel {
      * and returns a car object. Return false if failed.
      */
 
-    public function view_car($id) {
+    public function view_car($id)
+    {
         //the select sql statement
         $sql = "SELECT * FROM " . $this->tblCar . "," . $this->tblCarCategories .
             " WHERE " . $this->tblCar . ".category_id=" . $this->tblCarCategories . ".category_id" .
@@ -138,9 +183,10 @@ class CarModel {
     }
 
     //the update_car method updates an existing car in the database. Details of the car are posted in a form. Return true if succeed; false otherwise.
-    public function update_car($id) {
+    public function update_car($id)
+    {
         try {
-            
+
             //if the script did not received post data, display an error message and then terminite the script immediately
             if (!filter_has_var(INPUT_POST, 'make') ||
                 !filter_has_var(INPUT_POST, 'model') ||
@@ -157,10 +203,10 @@ class CarModel {
             $model = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'model', FILTER_SANITIZE_STRING)));
             $year = $this->dbConnection->real_escape_string(filter_input(INPUT_POST, 'year', FILTER_DEFAULT));
             $image = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'image', FILTER_SANITIZE_STRING)));
-            $price= $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'price', FILTER_SANITIZE_STRING)));
+            $price = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'price', FILTER_SANITIZE_STRING)));
             $description = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING)));
 
-            if((!strtotime($year))) {
+            if ((!strtotime($year))) {
                 throw new InvalidDateException("Car year is invalid");
             }
 
@@ -177,27 +223,24 @@ class CarModel {
             }
 
             return $query;
-        }
-        catch (DataMissingException $exc) {
+        } catch (DataMissingException $exc) {
             $view = new CarError();
             $view->display($exc->getMessage());
-        }
-        catch (DatabaseExecutionException $exc) {
+        } catch (DatabaseExecutionException $exc) {
             $view = new CarError();
             $view->display($exc->getMessage());
-        }
-        catch (InvalidDateException $exc) {
+        } catch (InvalidDateException $exc) {
             $view = new CarError();
             $view->display($exc->getMessage());
-        }
-        catch (Exception $exc) {
+        } catch (Exception $exc) {
             $view = new CarError();
             $view->display($exc->getMessage());
         }
     }
 
     //search the database for cars that match words in titles. Return an array of cars if succeed; false otherwise.
-    public function search_car($terms) {
+    public function search_car($terms)
+    {
         $terms = explode(" ", $terms); //explode multiple terms into an array
         //select statement for AND search
         $sql = "SELECT * FROM " . $this->tblCar . "," . $this->tblCarCategories .
@@ -237,44 +280,32 @@ class CarModel {
         return $cars;
     }
 
-    /*
+    // add new car to the database
+    public function create($id, $categoryId, $image, $description, $price, $make, $model, $year)
+    {
+        $id = $this->dbConnection->real_escape_string(trim($id));
+        $categoryId = $this->dbConnection->real_escape_string(trim($categoryId));
+        $image = $this->dbConnection->real_escape_string(trim($image));
+        $description = $this->dbConnection->real_escape_string(trim($description));
+        $price = $this->dbConnection->real_escape_string(trim($price));
+        $make = $this->dbConnection->real_escape_string(trim($make));
+        $model = $this->dbConnection->real_escape_string(trim($model));
+        $year = $this->dbConnection->real_escape_string(trim($year));
 
-        //add new car to the car database
-        public function create_car() {
-            //if the script did not received post data, display an error message and then terminite the script immediately
-            if (!filter_has_var(INPUT_POST, 'make') ||
-                !filter_has_var(INPUT_POST, 'model') ||
-                !filter_has_var(INPUT_POST, 'year') ||
-                !filter_has_var(INPUT_POST, 'image') ||
-                !filter_has_var(INPUT_POST, 'price') ||
-                !filter_has_var(INPUT_POST, 'description')) {
+        //query string for update
+        $sql = "INSERT INTO " . $this->tblCar . " (`car_id`, `category_id`, `image`, `description`, `price`, `make`, `model`, `year`)" .
+            "VALUES " . "('$id', '$categoryId', '$image', '$description', '$price', '$make', '$model', '$year')";
 
-            return false;
-        }
-
-        //retrieve data for the new car; data are sanitized and escaped for security.
-        $make = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'make', FILTER_SANITIZE_STRING)));
-        $model = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'model', FILTER_SANITIZE_STRING)));
-        $year = $this->dbConnection->real_escape_string(filter_input(INPUT_POST, 'year', FILTER_DEFAULT));
-        $image = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'image', FILTER_SANITIZE_STRING)));
-        $price = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'price', FILTER_SANITIZE_STRING)));
-        $description = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING)));
-
-        //query string for update 
-        $sql = "INSERT INTO " . $this->tblCar . " (id, make, model, year, image, price, description) "
-                . "VALUES (NULL, '$make', '$model', '$year', '$image', '$price', '$description'); ";
         //execute the query
         $query = $this->dbConnection->query($sql);
-        
-        
+
         return $query;
     }
 
-    */
-
 
     //get the car categories
-    private function get_car_category() {
+    private function get_car_category()
+    {
         $sql = "SELECT * FROM " . $this->tblCarCategories;
 
         //execute the query
