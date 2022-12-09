@@ -19,10 +19,26 @@ class CarModel
     //To use singleton pattern, this constructor is made private. To get an instance of the class, the getCarModel method must be called.
     private function __construct()
     {
-        $this->db = Database::getInstance();
-        $this->dbConnection = $this->db->getConnection();
-        $this->tblCar = $this->db->getCarTable();
-        $this->tblCarCategories = $this->db->getCarCategoriesTable();
+        try {
+            $this->db = Database::getInstance();
+            $this->dbConnection = $this->db->getConnection();
+            if (!$this->db || !$this->dbConnection) {
+                throw new DatabaseExecutionException("There was a problem connecting to the database");
+            }
+            $this->tblCar = $this->db->getCarTable();
+            $this->tblCarCategories = $this->db->getCarCategoriesTable();
+        }
+        catch (DatabaseExecutionException $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+            exit(1);
+        }
+        catch (Exception $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+            exit(1);
+        }
+
 
         //Escapes special characters in a string for use in an SQL statement. This stops SQL inject in POST vars.
         foreach ($_POST as $key => $value) {
@@ -73,6 +89,9 @@ class CarModel
 
 
         try {
+            if (!$this->dbConnection) {
+                throw new DatabaseExecutionException("Connection to the database could not be established.");
+            }
             //execute the query
             $query = $this->dbConnection->query($sql);
 
@@ -99,6 +118,7 @@ class CarModel
                 $cars[] = $car;
             }
             return $cars;
+
         } catch (DatabaseExecutionException $exc) {
             $view = new CarError();
             $view->display($exc->getMessage());
@@ -123,7 +143,7 @@ class CarModel
             //execute the query
             $query = $this->dbConnection->query($sql);
 
-            // if the query failed, return false.
+            // if the query failed, throw an error.
             if (!$query)
                 throw new DatabaseExecutionException("Error encountered when executing the SQL query");
 
@@ -143,6 +163,7 @@ class CarModel
                 $categories[] = $category;
             }
             return $categories;
+
         } catch (DatabaseExecutionException $exc) {
             $view = new CarError();
             $view->display($exc->getMessage());
@@ -164,22 +185,37 @@ class CarModel
             " WHERE " . $this->tblCar . ".category_id=" . $this->tblCarCategories . ".category_id" .
             " AND " . $this->tblCar . ".car_id='$id'";
 
-        //execute the query
-        $query = $this->dbConnection->query($sql);
+        try {
+            //execute the query
+            $query = $this->dbConnection->query($sql);
 
-        if ($query && $query->num_rows > 0) {
-            $obj = $query->fetch_object();
+            // if the query failed, throw an error
+            if (!$query) {
+                throw new DatabaseExecutionException("Error encountered when executing the SQL query");
+            }
 
-            //create a car object
-            $car = new Car(stripslashes($obj->make), stripslashes($obj->model), stripslashes($obj->year), stripslashes($obj->image), stripslashes($obj->price), stripslashes($obj->description), stripslashes($obj->category));
+            if ($query && $query->num_rows > 0) {
+                $obj = $query->fetch_object();
 
-            //set the id for the car
-            $car->setId($obj->car_id);
+                //create a car object
+                $car = new Car(stripslashes($obj->make), stripslashes($obj->model), stripslashes($obj->year), stripslashes($obj->image), stripslashes($obj->price), stripslashes($obj->description), stripslashes($obj->category));
 
-            return $car;
+                //set the id for the car
+                $car->setId($obj->car_id);
+
+                return $car;
+            }
+
+            return false;
         }
-
-        return false;
+        catch (DatabaseExecutionException $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+        }
+        catch (Exception $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+        }
     }
 
     //the update_car method updates an existing car in the database. Details of the car are posted in a form. Return true if succeed; false otherwise.
@@ -245,32 +281,43 @@ class CarModel
 
         $sql .= ")";
 
-        //execute the query
-        $query = $this->dbConnection->query($sql);
+        try {
 
-        // the search failed, return false.
-        if (!$query)
-            return false;
+            //execute the query
+            $query = $this->dbConnection->query($sql);
 
-        //search succeeded, but no car was found.
-        if ($query->num_rows == 0)
-            return 0;
+            // the search failed, return false.
+            if (!$query)
+                throw new DatabaseExecutionException("An error occurred while searching the database");
 
-        //search succeeded, and found at least 1 car found.
-        //create an array to store all the returned cars
-        $cars = array();
+            //search succeeded, but no car was found.
+            if ($query->num_rows == 0)
+                return 0;
 
-        //loop through all rows in the returned recordsets
-        while ($obj = $query->fetch_object()) {
-            $car = new Car($obj->make, $obj->model, $obj->year, $obj->image, $obj->price, $obj->description, $obj->category);
+            //search succeeded, and found at least 1 car found.
+            //create an array to store all the returned cars
+            $cars = array();
 
-            //set the id for the car
-            $car->setId($obj->car_id);
+            //loop through all rows in the returned recordsets
+            while ($obj = $query->fetch_object()) {
+                $car = new Car($obj->make, $obj->model, $obj->year, $obj->image, $obj->price, $obj->description, $obj->category);
 
-            //add the car into the array
-            $cars[] = $car;
+                //set the id for the car
+                $car->setId($obj->car_id);
+
+                //add the car into the array
+                $cars[] = $car;
+            }
+            return $cars;
         }
-        return $cars;
+        catch (DatabaseExecutionException $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+        }
+        catch (Exception $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+        }
     }
 
     // add new car to the database
@@ -289,10 +336,24 @@ class CarModel
         $sql = "INSERT INTO " . $this->tblCar . " (`car_id`, `category_id`, `image`, `description`, `price`, `make`, `model`, `year`)" .
             "VALUES " . "('$id', '$categoryId', '$image', '$description', '$price', '$make', '$model', '$year')";
 
+        try {
+
         //execute the query
         $query = $this->dbConnection->query($sql);
 
+        if (!$query) {
+            throw new DatabaseExecutionException("An error occurred while try to insert the data");
+        }
         return $query;
+        }
+        catch (DatabaseExecutionException $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+        }
+        catch (Exception $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+        }
     }
 
 
@@ -301,18 +362,28 @@ class CarModel
     {
         $sql = "SELECT * FROM " . $this->tblCarCategories;
 
-        //execute the query
-        $query = $this->dbConnection->query($sql);
+        try {
+            //execute the query
+            $query = $this->dbConnection->query($sql);
 
-        if (!$query) {
-            return false;
-        }
+            if (!$query) {
+                throw new DatabaseExecutionException("An error occurred while fetching the car categories table.");
+            }
 
-        //loop through all rows
-        $categories = array();
-        while ($obj = $query->fetch_object()) {
-            $category[$obj->category] = $obj->category_id;
+            //loop through all rows
+            $categories = array();
+            while ($obj = $query->fetch_object()) {
+                $category[$obj->category] = $obj->category_id;
+            }
+            return $categories;
         }
-        return $categories;
+        catch (DatabaseExecutionException $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+        }
+        catch (Exception $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+        }
     }
 }

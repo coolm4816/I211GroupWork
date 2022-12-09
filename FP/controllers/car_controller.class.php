@@ -24,7 +24,12 @@ class CarController
         // get all the cars and return then in an array
         $cars = $this->car_model->list_car();
 
-        //TODO: add error handling
+        if (!$cars) {
+            //display an error
+            $message = "There was a problem displaying cars.";
+            $this->error($message);
+            return;
+        }
 
         // display cars
         $view = new CarIndex();
@@ -38,7 +43,7 @@ class CarController
 
         if (!$car) {
             //display an error
-            $message = "There was a problem displaying the movie id='" . $id . "'.";
+            $message = "There was a problem displaying the car with an id='" . $id . "'.";
             $this->error($message);
             return;
         }
@@ -75,7 +80,7 @@ class CarController
 
         if (!$car) {
             //display an error
-            $message = "There was a problem displaying the car id='" . $id . "'.";
+            $message = "There was a problem displaying the car with an id='" . $id . "'.";
             $this->error($message);
             return;
         }
@@ -147,35 +152,44 @@ class CarController
     // add new car to the database
     public function create()
     {
-        //if the script did not received post data, display an error message and then terminite the script immediately
-        if (!filter_has_var(INPUT_POST, 'id') ||
-            !filter_has_var(INPUT_POST, 'category') ||
-            !filter_has_var(INPUT_POST, 'make') ||
-            !filter_has_var(INPUT_POST, 'model') ||
-            !filter_has_var(INPUT_POST, 'year') ||
-            !filter_has_var(INPUT_POST, 'price') ||
-            !filter_has_var(INPUT_POST, 'image') ||
-            !filter_has_var(INPUT_POST, 'description')) {
+        try {
+            //if the script did not received post data, display an error message and then terminite the script immediately
+            if (!filter_has_var(INPUT_POST, 'id') ||
+                !filter_has_var(INPUT_POST, 'category') ||
+                !filter_has_var(INPUT_POST, 'make') ||
+                !filter_has_var(INPUT_POST, 'model') ||
+                !filter_has_var(INPUT_POST, 'year') ||
+                !filter_has_var(INPUT_POST, 'price') ||
+                !filter_has_var(INPUT_POST, 'image') ||
+                !filter_has_var(INPUT_POST, 'description')) {
 
-            return false;
+                throw new DataMissingException("A required field is missing");
+            }
+
+            $id = filter_input(INPUT_POST, 'id');
+            $category = filter_input(INPUT_POST, 'category');
+            $make = filter_input(INPUT_POST, 'make');
+            $model = filter_input(INPUT_POST, 'model');
+            $year = filter_input(INPUT_POST, 'year');
+            $price = filter_input(INPUT_POST, 'price');
+            $image = filter_input(INPUT_POST, 'image');
+            $description = filter_input(INPUT_POST, 'description');
+
+            $this->car_model->create($id, $category, $image, $description, $price, $make, $model, $year);
+
+            $car = new Car($make, $model, $year, $image, $price, $description, $category);
+
+            $view = new CarDetail();
+            $view->display($car);
         }
-
-        $id = filter_input(INPUT_POST, 'id');
-        $category = filter_input(INPUT_POST, 'category');
-        $make = filter_input(INPUT_POST, 'make');
-        $model = filter_input(INPUT_POST, 'model');
-        $year = filter_input(INPUT_POST, 'year');
-        $price = filter_input(INPUT_POST, 'price');
-        $image = filter_input(INPUT_POST, 'image');
-        $description = filter_input(INPUT_POST, 'description');
-
-        $this->car_model->create($id, $category, $image, $description, $price, $make, $model, $year);
-
-        $car = new Car($make, $model, $year, $image, $price, $description, $category);
-
-        $view = new CarDetail();
-        $view->display($car);
-
+        catch(DataMissingException $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+        }
+        catch (Exception $exc) {
+            $view = new CarError();
+            $view->display($exc->getMessage());
+        }
     }
 
     public function update($id){
@@ -207,6 +221,16 @@ class CarController
 
 
 
+    }
+
+
+    //handle calling inaccessible methods
+    public function __call($name, $arguments)
+    {
+        // Note: value of $name is case sensitive.
+        $message = "Calling method '$name' caused errors. Route does not exist.";
+
+        $this->error($message);
     }
 
 }

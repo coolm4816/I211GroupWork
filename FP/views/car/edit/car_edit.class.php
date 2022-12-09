@@ -3,7 +3,7 @@
  * Author: Jawon Winbush
  * Date: 12/7/22
  * File: car_edit.class.php
- * Description: edit individual cars
+ * Description:
  */
 
 class CarEdit extends CarIndexView {
