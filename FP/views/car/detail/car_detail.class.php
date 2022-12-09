@@ -35,7 +35,8 @@ class CarDetail extends CarIndexView
         <div>
             <img style="max-width: 40%;" src="<?= $image ?>" alt="<?= $model ?>"/>
         </div>
-        <table style="width: 95%; margin: auto">
+        <br>
+        <table>
             <tr>
                 <td style="text-align: right;">
                     <p>Make:</p>
@@ -78,6 +79,8 @@ class CarDetail extends CarIndexView
             </tr>
         </table>
         <br>
+        <input type="button" id="edit-button" value="   Edit   "
+               onclick="window.location.href = '<?= BASE_URL ?>/car/edit/<?= $id ?>'">&nbsp;
         <br>
         <a href="<?= BASE_URL ?>/car/index">Go to car list</a>
 

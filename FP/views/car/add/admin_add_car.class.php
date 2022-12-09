@@ -8,7 +8,7 @@
 
 class AdminAddCar extends CarIndexView {
 
-    public function display($car) {
+    public function display($carId, $categories) {
         //display page header
         parent::displayHeader("Add car");
 
@@ -16,22 +16,22 @@ class AdminAddCar extends CarIndexView {
         if (isset($_SESSION['car_categories'])) {
             $categories = $_SESSION['car_categories'];
         }
-
-        $id = $car->getId();
-
         ?>
 
         <div id="main-header">Add new car details</div>
 
         <!-- display car details in a form -->
         <form class="new-media"  action="<?= BASE_URL ?>/car/create/" method="post" style="margin-top: 10px; padding: 10px;">
-            <input style="min-width: 90%; padding-left: 8px;" type="hidden" name="id" value="<?= $id ?>">
+            <input style="min-width: 90%; padding-left: 8px;" type="hidden" name="id" value="<?= $carId ?>">
 
             <p>
                 <strong>Category</strong>:
                 <?php
-                foreach ($categories as $c_category => $c_id) {
-                    echo "<input type='radio' name='category' value='$c_id' > $c_category &nbsp;&nbsp;";
+                foreach ($categories as $category) {
+                    $categoryName = $category->getCategory();
+                    $categoryId = $category->getID();
+                    echo "<input type='radio' name='category' value='$categoryId' required>
+                            <label style='margin-right: 0.4em;' for='category'>$categoryName</label>";
                 }
                 ?>
             </p>
@@ -47,8 +47,13 @@ class AdminAddCar extends CarIndexView {
             </p>
 
             <p>
-                <strong>Year</strong
+                <strong>Year</strong>
                 <input class="car-details" style="min-width: 90%; padding-left: 8px;" name="year" placeholder="Model year: year the vehicle was manufactured" type="number" size="4" value="" required="">
+            </p>
+
+            <p>
+                <strong>Price</strong>
+                <input class="car-details" style="min-width: 90%; padding-left: 8px;" name="price" placeholder="Rental price: the cost to rent the car per day" type="number" size="10" value="" required="">
             </p>
 
             <p>
