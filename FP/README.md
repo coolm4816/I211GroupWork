@@ -10,3 +10,9 @@ When people travel via an airport they do not bring their car with them, making 
 <p>
 Customers who may live by themselves or are in need of special accommodations may find that they are unable to find transportation to pick up their rental car. It may be that, due to supply shortages, they need to rent a vehicle from a location that is an inconvenient distance from their residence, or a less satisfactory vehicle from a nearby location. A service where you can rent a car temporarily for a few days while you cannot access your vehicle would solve this issue. Customers can even set a pick-up location to their house or a mechanic's shop, to continue their busy day without having to slow down due to not having a vehicle. The application will focus on being user-friendly and convenient to use.
 </p>
+
+<p>Log in info:</p>
+    <p>
+    coolm@iu.edu
+</p>
+    password: 111
