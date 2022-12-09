@@ -31,9 +31,9 @@ class IndexView
 
             <!-- <img src='<?= BASE_URL ?>/www/img/logo.png' style="width: 180px; border: none" /> -->
             <span style=' font-size: 36pt; font-weight: bold; vertical-align: top'>
-                                    Car Website
+                                    Odyssey Rentals
             </span>
-            <div style=' font-size: 14pt; font-weight: bold'>Rent a car!</div>
+            <div style=' font-size: 14pt; font-weight: bold'>Rent a car with us!</div>
             <br><a href='<?= BASE_URL ?>/car/index'>Home</a>
             <br><br>
 
@@ -58,7 +58,7 @@ class IndexView
         <br><br><br>
         <div id="push"></div>
         </div>
-        <div id="footer">&copy 2022 Car Website. All Rights Reserved.<br>This website is used for educational
+        <div id="footer">&copy 2022 Odyssey Rentals. All Rights Reserved.<br>This website is used for educational
             purposes only.
         </div>
         <script type="text/javascript" src="<?= BASE_URL ?>/www/js/ajax_autosuggestion.js"></script>
