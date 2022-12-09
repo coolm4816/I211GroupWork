@@ -226,3 +226,415 @@ input[type=submit]:hover, button:hover {
     padding: .75rem;
     border-top: 1px solid #dee2e6;
 }
+
+/* new styling */
+:root {
+    --accent-color1: dodgerblue;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+
+
+}
+
+.container{
+    background-color: #F8F8F8;
+
+}
+
+.grid-container {
+    margin: 10px auto 10px auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+
+}
+
+.make, .model{
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.item {
+    float: left;
+    min-height: 250px;
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+    background-color: #FFF;
+    margin: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px -10px rgb(0 0 0 / 50%);
+    transition: .2s ease-in-out;
+}
+
+.item:hover{
+    margin-top: 35px;
+    margin-bottom: 45px;
+    transition: .2s ease-in-out
+}
+
+.item .carDetails{
+    margin-top: 30px;
+}
+
+.rcd-numbers {
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    display: inline-block;
+}
+
+/* Home image */
+#wrapper {
+    background-image: url("https://hips.hearstapps.com/hmg-prod/images/polestar-2-001-1551208847.jpg");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 750px;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+/* */
+
+#wrapper * {
+    color: black;
+}
+
+#footer {
+    text-align: center;
+    background-color: #cccccc;
+    padding: 0.3em;
+}
+
+
+
+/* Header section */
+#searchbar {
+    float: right;
+    margin: 2em;
+}
+
+#searchtextbox{
+    font-size: 16px;
+    padding: 16px 30px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 0, 0, 60%);
+    margin-right: 10px;
+
+}
+
+#suggestionDiv{
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    font-size: 0.85em;
+    z-index: 9999;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,.15);
+    box-shadow: 2px 10px 12px 2px rgba(0,0,0,.175);
+}
+
+#suggestionDiv span {
+    display: block;
+    padding: 10px;
+    cursor: default;
+    min-width: 235px;
+    white-space: nowrap;
+    font-size: 16px;
+    border-radius: 5px
+}
+
+#suggestionDiv span:hover {
+    background-color: #b3cbf5;
+}
+
+.cm-navigation-area {
+    -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    z-index: 5;
+    display: block;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+}
+
+.cm-navigation {
+    background: #ffffff;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+.cm-burger-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#burger-nav {
+    fill: #575757;
+}
+
+.cm-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+}
+
+.cm-logo a img {
+    width: auto;
+    height: 50px;
+}
+
+.cm-nav nav {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cm-nav nav ul {
+    margin-right: 15px;
+    padding: 0;
+    display: flex;
+}
+
+.cm-nav nav ul li {
+    list-style: none;
+    display: flex;
+}
+
+.cm-nav nav ul li:not(:last-child) {
+    margin-right: 1.8em;
+}
+
+
+.cm-nav nav ul li a {
+    font-size: 0.9em;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+    font-weight: 300;
+}
+
+.cm-nav nav ul li a span {
+
+}
+
+.cm-nav nav ul li a span img {
+    width: 13px;
+    height: auto;
+}
+
+.cm-currency {
+    font-size: 1rem;
+}
+
+.cm-currency .cm-currency-link span {
+    margin-right: 0 !important;
+}
+
+.cm-currency .cm-currency-link span img {
+    width: 10px !important;
+}
+
+
+.cm-join-button-link {
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    background: dodgerblue;
+    color: #ffffff !important;
+    text-decoration: none;
+    padding: 0 20px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    font-weight: 100 !important;
+    font-size: 14px;
+    height: 32px;
+}
+
+.cm-join-button-link:hover {
+    background: #000000;
+}
+
+.cm-cart {
+    width: 20px;
+    height: auto;
+    padding: 1%;
+}
+
+#cm-cart-link {
+    position: relative;
+}
+
+#cm-cart-link .cart-img {
+    width: 20px;
+    height: auto;
+}
+
+#cm-cart-link .cm-cart-badge:after {
+    position: absolute;
+    right: -5px;
+    top: -3px;
+    content: attr(data-count);
+    font-size: 60%;
+    width: 8px;
+    height: 8px;
+    padding: 0.3em;
+    border-radius: 50%;
+    line-height: 1em;
+    color: white;
+    background: dodgerblue;
+    text-align: center;
+    min-width: 1.2em;
+}
+
+
+/* ===================================
+       Navbar Search Integrations
+   =================================== */
+
+.cm-nav-searchbar {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    height: 100%;
+}
+
+.cm-nav-searchbar .field-container {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    width: 90%;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.cm-nav-searchbar .icons-container {
+    position: absolute;
+    top: 12px;
+    right: 4px;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+}
+
+.cm-nav-searchbar .icon-search {
+    position: relative;
+    top: 5px;
+    left: 4px;
+    width: 40%;
+    height: 40%;
+    opacity: 1;
+    border-radius: 50%;
+    border: 2px solid #bebebe;
+    transition: opacity 0.25s ease, transform 0.43s cubic-bezier(0.694, 0.048, 0.335, 1);
+}
+
+.cm-nav-searchbar .icon-search:after {
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    right: -2px;
+    width: 2px;
+    border-radius: 3px;
+    transform: rotate(-45deg);
+    height: 8px;
+    background-color: #bebebe;
+}
+
+.cm-nav-searchbar .search-field {
+    border: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0px 10px;
+    background: #f7f7f7;
+    border-radius: 3px;
+    transition: all 0.4s ease;
+}
+
+.cm-nav-searchbar .search-field:focus {
+    outline: none;
+}
+
+.cm-nav-searchbar .search-field:focus+.icons-container .icon-close {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.cm-nav-searchbar .search-field:focus+.icons-container .icon-search {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+/* End of header */
+
+
+
+
+#main-header {
+    margin-top: 0.6em;
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--accent-color1);
+}
+
+.home-btn a {
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    background: dodgerblue;
+    color: #ffffff !important;
+    text-decoration: none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    font-weight: 100 !important;
+    font-size: 14px;
+    height: 32px;
+    border: none;
+    justify-content: center;
+    width: 10%;
+    padding: 10px;
+    margin-left: 45%;
+
+}
+
+.home-btn a:hover{
+    background-color: black;
+    color: white;
+}
+
+#viewInventory{
+    margin-left: 40px;
+}
+
+
+.car-details {
+    margin: 3px;
+    border: solid 1px black;
+    box-sizing: border-box;
+    letter-spacing: normal;
+    word-spacing: normal;
+    padding: 0 20px;
+    height: 50px;
+}
+
+
