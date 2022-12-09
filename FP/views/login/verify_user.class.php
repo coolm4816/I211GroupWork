@@ -22,6 +22,8 @@ class VerifyUser extends LoginIndex {
 
             <div class="options">
                 <span style="float: left"><a href="<?=BASE_URL?>/user/logout">Logout</a></span>
+                <span style="float: left"><a href="<?=BASE_URL?>/car/index">View Inventory</a></span>
+
             </div>
 
             <?php

@@ -183,7 +183,7 @@ class CarModel
     }
 
     //the update_car method updates an existing car in the database. Details of the car are posted in a form. Return true if succeed; false otherwise.
-    public function update_car($id)
+    public function update_car($id, $make, $model, $year, $price, $image, $description)
     {
         try {
 
@@ -198,13 +198,6 @@ class CarModel
                 throw new DataMissingException("Missing data field. Please re-check your data");
             }
 
-            //retrieve data for the new car; data are sanitized and escaped for security.
-            $make = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'make', FILTER_SANITIZE_STRING)));
-            $model = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'model', FILTER_SANITIZE_STRING)));
-            $year = $this->dbConnection->real_escape_string(filter_input(INPUT_POST, 'year', FILTER_DEFAULT));
-            $image = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'image', FILTER_SANITIZE_STRING)));
-            $price = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'price', FILTER_SANITIZE_STRING)));
-            $description = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING)));
 
             if ((!strtotime($year))) {
                 throw new InvalidDateException("Car year is invalid");

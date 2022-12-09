@@ -31,12 +31,18 @@ class CarDetail extends CarIndexView
 
         <div id="main-header">Car Details</div>
         <hr>
+        <div class="row">
+
         <!-- display car details in a table -->
-        <div>
-            <img style="max-width: 40%;" src="<?= $image ?>" alt="<?= $model ?>"/>
+        <div class="column">
+        <div id="carImg">
+            <img style="width: 100%;" src="<?= $image ?>" alt="<?= $model ?>"/>
+        </div>
         </div>
         <br>
-        <table>
+        <div class="column">
+        <div class="table_container">
+        <table class="carDetailTable">
             <tr>
                 <td style="text-align: right;">
                     <p>Make:</p>
@@ -78,6 +84,9 @@ class CarDetail extends CarIndexView
                 </td>
             </tr>
         </table>
+        </div>
+        </div>
+        </div>
         <br>
         <input type="button" id="edit-button" value="   Edit   "
                onclick="window.location.href = '<?= BASE_URL ?>/car/edit/<?= $id ?>'">&nbsp;

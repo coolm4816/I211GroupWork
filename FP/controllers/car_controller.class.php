@@ -178,4 +178,35 @@ class CarController
 
     }
 
+    public function update($id){
+        if (!filter_has_var(INPUT_POST, 'id') ||
+            !filter_has_var(INPUT_POST, 'make') ||
+            !filter_has_var(INPUT_POST, 'model') ||
+            !filter_has_var(INPUT_POST, 'year') ||
+            !filter_has_var(INPUT_POST, 'price') ||
+            !filter_has_var(INPUT_POST, 'image') ||
+            !filter_has_var(INPUT_POST, 'description')) {
+
+            return false;
+        }
+
+        $id = filter_input(INPUT_POST, 'id');
+        $make = filter_input(INPUT_POST, 'make');
+        $model = filter_input(INPUT_POST, 'model');
+        $year = filter_input(INPUT_POST, 'year');
+        $price = filter_input(INPUT_POST, 'price');
+        $image = filter_input(INPUT_POST, 'image');
+        $description = filter_input(INPUT_POST, 'description');
+
+        $this->car_model->update_car($id, $make, $model, $year, $price, $image, $description);
+
+        $car = new Car($make, $model, $year, $image, $price, $description);
+
+        $view = new CarDetail();
+        $view->display($car);
+
+
+
+    }
+
 }

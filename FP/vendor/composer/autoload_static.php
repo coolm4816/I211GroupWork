@@ -17,6 +17,7 @@ class ComposerStaticInitfe014b03f0bb186bd4ce9f1175abf8b3
         'CarIndexView' => __DIR__ . '/../..' . '/views/car/car_index_view.class.php',
         'CarModel' => __DIR__ . '/../..' . '/models/car_model.class.php',
         'CarSearch' => __DIR__ . '/../..' . '/views/car/search/car_search.class.php',
+        'Category' => __DIR__ . '/../..' . '/models/category.class.php',
         'ComposerAutoloaderInitfe014b03f0bb186bd4ce9f1175abf8b3' => __DIR__ . '/..' . '/composer/autoload_real.php',
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
         'Composer\\Autoload\\ComposerStaticInitfe014b03f0bb186bd4ce9f1175abf8b3' => __DIR__ . '/..' . '/composer/autoload_static.php',

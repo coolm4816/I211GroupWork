@@ -20,7 +20,8 @@ body{
 
 .container{
     width: 100%;
-    background-color: #F8F8F8
+    background-color: #F8F8F8;
+    padding: 20px;
 }
 .grid-container {
     margin: 10px auto 10px auto;
@@ -154,7 +155,30 @@ input[type=submit]:hover, button:hover {
     background-color: var(--accent-color1);
     border-color: var(--accent-color1);
 }
+#carImg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+.table_container {
+    max-width: 40vw;
+}
 
+.row {
+    display: flex;
+}
+
+
+.column {
+    flex: 50%;
+    padding: 10px;
+}
+
+.carDetailTable{
+    float: right;
+    width: 50%;
+}
 .car-details {
     margin: 3px;
     border: solid 1px black;
@@ -165,3 +189,40 @@ input[type=submit]:hover, button:hover {
     height: 50px;
 }
 
+.carDetailTable {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    box-sizing: border-box;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+}
+
+.carDetailTable thead th {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #212529;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    text-align: inherit;
+    padding: .75rem;
+    border-top: 1px solid #dee2e6;
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.carDetailTable td {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    padding: .75rem;
+    border-top: 1px solid #dee2e6;
+}

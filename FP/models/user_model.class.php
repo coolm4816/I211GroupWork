@@ -93,12 +93,14 @@ class UserModel{
         $hash = $row['password'];
         $id = $row['id'];
         $isAdmin = $row['isAdmin'];
+        $fname = $row['fname'];
 
 
         if ($password == $hash) {
             setcookie("email", $email);
             setcookie('id', $id);
             setcookie('isAdmin', $isAdmin);
+            setcookie('fname', $fname);
             return true;
         } else {
             echo $row['password'];
@@ -112,6 +114,7 @@ class UserModel{
     public function logout() {
         unset($_COOKIE['id']);
         unset($_COOKIE['email']);
+        unset($_COOKIE['fname']);
         unset($_COOKIE['isAdmin']);
         return true;
     }

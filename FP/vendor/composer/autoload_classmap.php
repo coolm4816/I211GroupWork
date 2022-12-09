@@ -16,6 +16,7 @@ return array(
     'CarIndexView' => $baseDir . '/views/car/car_index_view.class.php',
     'CarModel' => $baseDir . '/models/car_model.class.php',
     'CarSearch' => $baseDir . '/views/car/search/car_search.class.php',
+    'Category' => $baseDir . '/models/category.class.php',
     'ComposerAutoloaderInitfe014b03f0bb186bd4ce9f1175abf8b3' => $vendorDir . '/composer/autoload_real.php',
     'Composer\\Autoload\\ClassLoader' => $vendorDir . '/composer/ClassLoader.php',
     'Composer\\Autoload\\ComposerStaticInitfe014b03f0bb186bd4ce9f1175abf8b3' => $vendorDir . '/composer/autoload_static.php',

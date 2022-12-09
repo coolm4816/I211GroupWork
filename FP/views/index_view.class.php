@@ -34,11 +34,19 @@ class IndexView
                                     Car Website
             </span>
             <div style=' font-size: 14pt; font-weight: bold'>Rent a car!</div>
+            <br><a href='<?= BASE_URL ?>/car/index'>Home</a>
             <br><br>
-            <div id="login">
-                <a href="<?= BASE_URL ?>/user/login">Log in</a>
-            </div>
 
+            <?php
+                if (!isset($_COOKIE['id'])){
+                    echo '<div id="login"><a href="'. BASE_URL . '/user/login">Log in</a></div>';
+                }
+                else{
+                    echo '<div id="userName"><h3>Hello, ' . $_COOKIE['fname'] . '</h3></div>';
+
+                }
+
+            ?>
         </div>
         <?php
     }//end of displayHeader function
