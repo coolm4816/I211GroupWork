@@ -62,7 +62,6 @@ INSERT INTO `cars` (`car_id`, `category_id`, `image`, `description`, `price`, `m
                                                                                                            (17, 7, 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQk4aYVjK3JhPYrmDnhW2HINS6xSz9SzyLm7pmXRdOZdNQwvK2U', 'The S-Class has long been the best-seller among large luxury sedans, and Mercedes-Benz is introducing a fully redesigned seventh-generation model for 2021. to the 2021 S-Class will compete against segment contenders including the BMW 7 Series, Audi A8, Lexus LS, Genesis G90, and Tesla Model S.', '99.99', 'Mercedes-Benz', 'S-Class', 2021),
                                                                                                            (18, 16, 'https://www.model-space.com/blog/wp-content/uploads/2019/11/vw-samba-history-1.jpg', 'Known officially as the Volkswagen Type 2 (the Beetle was the Type 1) or the Transporter, the bus was a favorite mode of transportation for hippies in the U.S. during the 1960s and became an icon of the American counterculture movement.', '79.99', 'Volkswagen', 'Transporter', 1967);
 
-
 -- --------------------------------------------------------
 
 --
