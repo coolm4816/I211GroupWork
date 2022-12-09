@@ -34,13 +34,15 @@ class CarEdit extends CarIndexView {
         <form class="new-media"  action='<?= BASE_URL . "/car/update/" . $id ?>' method="post" style=" margin-top: 10px; padding: 10px;">
             <input type="hidden" name="id" value="<?= $id ?>">
             <p>
-                <input style="min-width: 90%; padding-left: 8px;" name="category" placeholder="Category of the vehicle" type="text" size="100" value="<?= $category ?>" required autofocus></p>
-            <p><strong>Category</strong>:
+            <!-- <input style="min-width: 90%; padding-left: 8px;" name="category" placeholder="Category of the vehicle" type="text" size="100" value="<?= $category ?>" required autofocus></p>
+            <p><strong>Category</strong>: -->
                 <?php
+                /*
                 foreach ($categories as $c_category => $c_id) {
                     $checked = ($category == $c_category ) ? "checked" : "";
                     echo "<input type='radio' name='category' value='$c_id' $checked> $c_category &nbsp;&nbsp;";
                 }
+                    */
                 ?>
             </p>
             <p><input class="car-details" style="min-width: 90%; padding-left: 8px;" name="make" placeholder="Make: brand of the vehicle" type="text" size="100" value="<?= $make ?>" required></p>
